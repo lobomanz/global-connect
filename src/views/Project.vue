@@ -1,0 +1,126 @@
+<template>
+    <Header>
+      
+    </Header>
+    <Gallery :images="foundList"/>
+    <BlogText :content="content"></BlogText>
+
+  </template>
+  
+  <script setup>
+  import { useRoute } from 'vue-router'; 
+  import Header from '../components/Header.vue'
+  import BlogText from '../components/BlogText.vue'
+  import Gallery from '../components/Gallery.vue'
+  import { ref, defineProps } from 'vue';
+  const route = useRoute(); 
+  const workId = route.params.id; 
+  
+
+  
+  const imagesList = ref([
+    {
+        list: [
+            '/images/copot_kuca_1.png',
+            '/images/copot_kuca_2.png',
+            '/images/copot_kuca_3.png',
+            '/images/copot_kuca_4.png',
+            '/images/copot_kuca_5.png',
+        ],
+        id: 1
+    },
+    {
+        list: [
+            '/images/oc_varazdin_1.png',
+            '/images/oc_varazdin_2.png',
+            '/images/oc_varazdin_3.png',
+            '/images/oc_varazdin_4.png',
+            '/images/oc_varazdin_5.png',
+            '/images/oc_varazdin_6.png',
+            '/images/oc_varazdin_7.png',
+            '/images/oc_varazdin_8.png',
+        ],
+        id: 2
+    },
+    {
+        list: [
+            '/images/oc_cakovec_1.png',
+            '/images/oc_cakovec_2.png',
+            '/images/oc_cakovec_3.png',
+            '/images/oc_cakovec_4.png',
+            '/images/oc_cakovec_5.png',
+            '/images/oc_cakovec_6.png',
+        ],
+        id: 3
+    },
+    {
+        list: [
+            '/images/drustveni_dom_1.jpeg',
+            '/images/drustveni_dom_2.jpeg',
+            '/images/drustveni_dom_3.jpeg',
+            '/images/drustveni_dom_4.jpeg',
+            '/images/drustveni_dom_5.jpeg',
+            '/images/drustveni_dom_6.jpeg',
+            '/images/drustveni_dom_7.jpeg',
+            '/images/drustveni_dom_8.jpeg',
+            '/images/drustveni_dom_9.jpeg',
+        ],
+        id: 4
+    },
+]);
+
+function getListById(id) {
+    const item = imagesList.value.find(image => image.id === id);
+    return item ? item.list : null; // Return the list or null if not found
+}
+
+// Example usage
+const foundList = getListById(parseInt(workId));
+console.log(foundList,workId)
+// images.value=images.value.list;
+
+const content = ref(`
+  <h2>Beginning of the Project</h2>
+  <p>
+    The initial phase of the project commenced with an in-depth analysis of user requirements. The team conducted surveys and focus groups to gather insights and understand the core needs of our target audience. This foundational research guided the subsequent design decisions and project scope.
+  </p>
+  <br>
+  <p>
+    During this stage, we also outlined the project timeline and key milestones. Each team member was assigned specific roles and responsibilities to ensure a smooth workflow. Collaboration tools were put in place to facilitate communication and document sharing among the team members.
+  </p>
+  <br>
+  
+  <h2>Implementation</h2>
+  <p>
+    The implementation phase involved translating our designs into a functional product. Our developers worked diligently to build the application, utilizing modern technologies that ensured scalability and performance. Regular testing was integrated into the development cycle to catch and address issues early.
+  </p>
+  <br>
+  <p>
+    We also held weekly check-ins to assess progress and align on goals. Feedback from stakeholders was gathered continuously, allowing us to make necessary adjustments to the project plan. This iterative approach proved vital in refining our final product and meeting user expectations.
+  </p>
+  <br>
+
+  <h2>Current Use</h2>
+  <p>
+    Currently, the project has been deployed and is being actively used by our target audience. Users have reported positive feedback regarding its usability and features. We are continuously monitoring usage patterns and gathering user feedback to identify areas for improvement and additional functionalities.
+  </p>
+  <br>
+  <p>
+    The project has already begun to show tangible benefits, including increased efficiency and user engagement. Future updates are planned based on the insights we've gained, ensuring that the application evolves in response to user needs and technological advancements.
+  </p>
+  <br>
+`);
+  </script>
+  <style lang="scss">
+  .wrapper{
+    h2{
+        font-size: 32px;
+        padding-bottom: 20px;
+        padding-top: 10px;
+        font-weight: 500;
+    }
+    p{
+        font-size: 18px;
+    }
+  }
+</style>
