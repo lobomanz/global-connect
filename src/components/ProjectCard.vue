@@ -42,7 +42,9 @@
   <style scoped lang="scss">
   .card-container{
     padding: 10px;
-    margin-inline: 10px;
+    @include mobile{
+      margin-inline: 10px;
+    }
   }
   a{
     text-decoration: none;
