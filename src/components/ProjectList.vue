@@ -44,12 +44,12 @@
         .project-card{
 
             width: 31vw;
-            height: 350px;
-          padding: 15px;
-          @include mobile{
-            
+            // height: 350px;
+            @include mobile{
+              padding: 15px;
+              
             width: auto;
-            height: 230px;
+            // height: 230px;
           }
           a{
             text-decoration: none;
