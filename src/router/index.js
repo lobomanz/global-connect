@@ -50,7 +50,11 @@ const router = createRouter({
       name: 'service',
       component: Project,
     },
-  ]
+  ],
+  scrollBehavior(to, from, savedPosition) {
+    // Always scroll to top when navigating to a new page
+    return { top: 0 }
+  }
 })
 
 export default router

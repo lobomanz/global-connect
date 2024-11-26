@@ -67,6 +67,146 @@
         ],
         id: 4
     },
+    {
+        list: [
+            '/images/drustveni_dom_1.jpeg',
+            '/images/drustveni_dom_2.jpeg',
+            '/images/drustveni_dom_3.jpeg',
+            '/images/drustveni_dom_4.jpeg',
+            '/images/drustveni_dom_5.jpeg',
+            '/images/drustveni_dom_6.jpeg',
+            '/images/drustveni_dom_7.jpeg',
+            '/images/drustveni_dom_8.jpeg',
+            '/images/drustveni_dom_9.jpeg',
+        ],
+        id: 5
+    },
+    {
+        list: [
+            '/images/drustveni_dom_1.jpeg',
+            '/images/drustveni_dom_2.jpeg',
+            '/images/drustveni_dom_3.jpeg',
+            '/images/drustveni_dom_4.jpeg',
+            '/images/drustveni_dom_5.jpeg',
+            '/images/drustveni_dom_6.jpeg',
+            '/images/drustveni_dom_7.jpeg',
+            '/images/drustveni_dom_8.jpeg',
+            '/images/drustveni_dom_9.jpeg',
+        ],
+        id: 6
+    },
+    {
+        list: [
+            '/images/drustveni_dom_1.jpeg',
+            '/images/drustveni_dom_2.jpeg',
+            '/images/drustveni_dom_3.jpeg',
+            '/images/drustveni_dom_4.jpeg',
+            '/images/drustveni_dom_5.jpeg',
+            '/images/drustveni_dom_6.jpeg',
+            '/images/drustveni_dom_7.jpeg',
+            '/images/drustveni_dom_8.jpeg',
+            '/images/drustveni_dom_9.jpeg',
+        ],
+        id: 7
+    },
+    {
+        list: [
+            '/images/drustveni_dom_1.jpeg',
+            '/images/drustveni_dom_2.jpeg',
+            '/images/drustveni_dom_3.jpeg',
+            '/images/drustveni_dom_4.jpeg',
+            '/images/drustveni_dom_5.jpeg',
+            '/images/drustveni_dom_6.jpeg',
+            '/images/drustveni_dom_7.jpeg',
+            '/images/drustveni_dom_8.jpeg',
+            '/images/drustveni_dom_9.jpeg',
+        ],
+        id: 8
+    },
+    {
+        list: [
+            '/images/drustveni_dom_1.jpeg',
+            '/images/drustveni_dom_2.jpeg',
+            '/images/drustveni_dom_3.jpeg',
+            '/images/drustveni_dom_4.jpeg',
+            '/images/drustveni_dom_5.jpeg',
+            '/images/drustveni_dom_6.jpeg',
+            '/images/drustveni_dom_7.jpeg',
+            '/images/drustveni_dom_8.jpeg',
+            '/images/drustveni_dom_9.jpeg',
+        ],
+        id: 9
+    },
+    {
+        list: [
+            '/images/drustveni_dom_1.jpeg',
+            '/images/drustveni_dom_2.jpeg',
+            '/images/drustveni_dom_3.jpeg',
+            '/images/drustveni_dom_4.jpeg',
+            '/images/drustveni_dom_5.jpeg',
+            '/images/drustveni_dom_6.jpeg',
+            '/images/drustveni_dom_7.jpeg',
+            '/images/drustveni_dom_8.jpeg',
+            '/images/drustveni_dom_9.jpeg',
+        ],
+        id: 10
+    },
+    {
+        list: [
+            '/images/drustveni_dom_1.jpeg',
+            '/images/drustveni_dom_2.jpeg',
+            '/images/drustveni_dom_3.jpeg',
+            '/images/drustveni_dom_4.jpeg',
+            '/images/drustveni_dom_5.jpeg',
+            '/images/drustveni_dom_6.jpeg',
+            '/images/drustveni_dom_7.jpeg',
+            '/images/drustveni_dom_8.jpeg',
+            '/images/drustveni_dom_9.jpeg',
+        ],
+        id: 11
+    },
+    {
+        list: [
+            '/images/drustveni_dom_1.jpeg',
+            '/images/drustveni_dom_2.jpeg',
+            '/images/drustveni_dom_3.jpeg',
+            '/images/drustveni_dom_4.jpeg',
+            '/images/drustveni_dom_5.jpeg',
+            '/images/drustveni_dom_6.jpeg',
+            '/images/drustveni_dom_7.jpeg',
+            '/images/drustveni_dom_8.jpeg',
+            '/images/drustveni_dom_9.jpeg',
+        ],
+        id: 12
+    },
+    {
+        list: [
+            '/images/drustveni_dom_1.jpeg',
+            '/images/drustveni_dom_2.jpeg',
+            '/images/drustveni_dom_3.jpeg',
+            '/images/drustveni_dom_4.jpeg',
+            '/images/drustveni_dom_5.jpeg',
+            '/images/drustveni_dom_6.jpeg',
+            '/images/drustveni_dom_7.jpeg',
+            '/images/drustveni_dom_8.jpeg',
+            '/images/drustveni_dom_9.jpeg',
+        ],
+        id: 13
+    },
+    {
+        list: [
+            '/images/drustveni_dom_1.jpeg',
+            '/images/drustveni_dom_2.jpeg',
+            '/images/drustveni_dom_3.jpeg',
+            '/images/drustveni_dom_4.jpeg',
+            '/images/drustveni_dom_5.jpeg',
+            '/images/drustveni_dom_6.jpeg',
+            '/images/drustveni_dom_7.jpeg',
+            '/images/drustveni_dom_8.jpeg',
+            '/images/drustveni_dom_9.jpeg',
+        ],
+        id: 14
+    },
 ]);
 
 function getListById(id) {

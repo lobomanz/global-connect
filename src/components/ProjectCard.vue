@@ -73,6 +73,7 @@
     background-color: rgba(0, 0, 0, 1);
     opacity: 0;
     transition: opacity 0.3s ease;
+    height: calc(100% - 5px);
   }
   
   .overlay.visible {
@@ -100,6 +101,11 @@
     text-decoration: none !important;
     @include desktop{
       display: none;
+    }
+  }
+  h2{
+    @include mobile{
+      font-size: 18px;
     }
   }
   </style>
