@@ -1,6 +1,6 @@
 <template>
     <div class="profile-card">
-      <img :src="profile.image" alt="Profile Picture" class="profile-image" />
+      <img :src="profile.image" alt="Profile Picture" class="profile-image"  loading="lazy"/>
       <p class="profile-name">{{ profile.name }}</p>
       <p class="profile-title">{{ profile.title }}</p>
     </div>

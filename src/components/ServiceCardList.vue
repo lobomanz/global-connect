@@ -1,14 +1,14 @@
 <template>
     <div class="image-card-list">
       <div class="row" v-for="(row, rowIndex) in rows" :key="rowIndex">
-        <a
+        <router-link
           v-for="item in row"
+          :to="{ name: 'project', params: { id: item.id } }"
           :key="item.id"
-          :href="`/service/${item.id}`"
           class="card-link"
         >
           <ServiceCard :data="item" />
-        </a>
+        </router-link>
       </div>
     </div>
   </template>
