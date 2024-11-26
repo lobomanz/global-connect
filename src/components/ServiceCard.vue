@@ -22,9 +22,11 @@
   <style lang="scss" scoped>
   .image-card {
     margin: 15px;
-    width: 100%;
     overflow: hidden;
     text-align: center;
+    @include desktop{
+      width: 100%;
+    }
   
     .image {
       width: 100%;

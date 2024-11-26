@@ -94,28 +94,34 @@ const filteredItems = computed(() => {
 });
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .wrapper {
   max-width: 1000px;
   margin: 0 auto; /* Center the wrapper */
 }
 
 .filters {
-  display: flex;
   flex-wrap: wrap;
   margin-bottom: 20px;
+  @include desktop{
+    display: flex;
+  }
 }
 
 .reference-list {
   list-style-type: none;
   padding: 0;
-  margin-top: 50px; /* Margin top for the list */
+  margin-top: 50px; 
+  @include mobile{
+    max-width: 300px;
+    margin: auto;
+  }
 }
 
 .reference-item {
   display: flex;
   align-items: center;
-  margin: 10px 0;
+  margin: 10px ;
 
   .year {
     font-weight: bold; /* Bold for the year */
@@ -134,10 +140,17 @@ const filteredItems = computed(() => {
     font-size: 16px; /* Font size for other properties */
     margin-right: 5px; /* Spacing for other properties */
   }
+  @include mobile{
+    .investor,.solution,.project{
+      display: none;
+    }
+  }
 }
 
 /* Style for separator */
 .reference-item span:not(:last-child)::after {
-  content: ' - ';
+  @include desktop{
+    content: ' - '; 
+  }
 }
 </style>

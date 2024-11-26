@@ -37,14 +37,24 @@
       .project-wrapper{
         max-width: calc(93vw + 60px);
         width: 100%;
-        flex-wrap: wrap;
-        display: flex;
-        justify-content: center;
         margin-inline: auto;
+        @include desktop{
+          flex-wrap: wrap;
+          display: flex;
+          justify-content: center;
+        }
         .project-card{
+
             width: 31vw;
             height: 350px;
           padding: 15px;
+          @include mobile{
+            width: auto;
+            height: 250px;
+          }
+          a{
+            text-decoration: none;
+          }
           &:hover{
             cursor: pointer;
           }

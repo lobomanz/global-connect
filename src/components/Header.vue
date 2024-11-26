@@ -54,11 +54,11 @@
         </div>
       </div>
       <div class="menu" :class="{ open: isOpen }">
-        <RouterLink to="/refrences" class="nav-item">refrences</RouterLink>
-        <RouterLink to="/services" class="nav-item">services</RouterLink>
-        <RouterLink to="/people" class="nav-item">people</RouterLink>
-        <RouterLink to="/work" class="nav-item">work</RouterLink>
-        <RouterLink to="/contact" class="nav-item">contact</RouterLink>
+        <RouterLink @click="toggleHamburger" to="/refrences" class="nav-item">refrences</RouterLink>
+        <RouterLink @click="toggleHamburger" to="/services" class="nav-item">services</RouterLink>
+        <RouterLink @click="toggleHamburger" to="/people" class="nav-item">people</RouterLink>
+        <RouterLink @click="toggleHamburger" to="/work" class="nav-item">work</RouterLink>
+        <RouterLink @click="toggleHamburger" to="/contact" class="nav-item">contact</RouterLink>
       </div>
     </div>
   </header>
@@ -146,20 +146,20 @@ const toggleHamburger = () => {
       opacity: 0.7;
     }
   }
-  .transparent {
-    // background: transparent;
-    color: #fff;
-    background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.5) 0%,
-      rgba(0, 0, 0, 0) 100%
-    );
-  }
   .color-white {
     color: #fff;
   }
 }
 
+.transparent {
+  // background: transparent;
+  color: #fff;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
 .header-mobile {
   display: none;
 
@@ -196,7 +196,7 @@ const toggleHamburger = () => {
 
           span {
             display: block;
-            height: 2px;
+            height: 3px;
             width: 100%;
             background-color: #333;
             transition: all 0.3s ease;
@@ -207,7 +207,7 @@ const toggleHamburger = () => {
           &.open {
             .hamburger-top {
               
-              transform: rotate(45deg) translate(7px, 5px);
+              transform: rotate(45deg) translate(6px, 5px);
             }
 
             .hamburger-middle {

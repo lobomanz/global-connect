@@ -12,6 +12,7 @@
         <p>{{ info.projectDate }}</p>
       </div>
     </div>
+    <h3 class="title">{{ info.projectName }}</h3>
   </template>
   
   <script setup>
@@ -35,7 +36,10 @@
   const hover = ref(false);
   </script>
   
-  <style scoped>
+  <style scoped lang="scss">
+  a{
+    text-decoration: none;
+  }
   .image-container {
     position: relative;
     max-width: 100%;
@@ -79,6 +83,14 @@
   
   .text.visible {
     opacity: 1; /* Full opacity on hover */
+  }
+  .title{
+    color: black;
+    text-transform: uppercase;
+    text-decoration: none !important;
+    @include desktop{
+      display: none;
+    }
   }
   </style>
   

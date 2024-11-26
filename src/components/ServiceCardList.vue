@@ -40,13 +40,17 @@
   <style lang="scss" scoped>
   .image-card-list {    
     padding: 20px;
-    display: flex;
-    flex-direction: column;
+    @include desktop{
+      display: flex;
+      flex-direction: column;
+    }
   
     .row {
-      display: flex;
-      justify-content: space-between;
       margin-bottom: 20px;
+      @include desktop{
+        display: flex;
+        justify-content: space-between;
+      }
   
       .card-link {
         width: 25% ;
