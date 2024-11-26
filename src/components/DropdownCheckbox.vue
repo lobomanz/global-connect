@@ -43,35 +43,47 @@ const handleCheckboxChange = (item) => {
 
 <style lang="scss" scoped>
 .dropdown {
-  
-  width: 200px; // Max width of 200px
+  margin-inline: 10px;
+  @include desktop{
+    width: 200px; 
+    margin: 10px; 
+
+  }
   position: relative;
-  margin: 10px; // Margin for the container
 
   &.open {
     .dropdown-container {
-      border-bottom: none; // Remove bottom border when open
-      box-shadow: 0 1px 4px rgba(0, 0, 0, .2); // Shadow on container
+      border-bottom: none; 
+      @include desktop{
+        box-shadow: 0 1px 4px rgba(0, 0, 0, .2); 
+      }
     }
 
     .dropdown-menu {
-      box-shadow: 0 6px 6px rgba(0, 0, 0, .2); // Shadow for the dropdown menu
+      @include desktop{
+        box-shadow: 0 6px 6px rgba(0, 0, 0, .2); 
+      }
     }
 
     .dropdown-button {
-      box-shadow: 0 1px 4px rgba(0, 0, 0, .2); // Shadow on button when opened
+      @include desktop{
+        box-shadow: 0 1px 4px rgba(0, 0, 0, .2); 
+      }
     }
   }
 
   .dropdown-container {
-    width: 100%; // Full width
-    max-width: 200px; // Max width of 200px
-    // Black bottom border when closed
+    width: 100%; 
+    @include desktop{
+      max-width: 200px; 
+      }
 
     .dropdown-button {
+      @include desktop{
+        border-bottom: 3px solid black; 
+      }
       transition: 0.3s;
       border: none;
-      border-bottom: 3px solid black; 
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -93,15 +105,15 @@ const handleCheckboxChange = (item) => {
         height: 12px;
         border-left: 2px solid black;
         border-bottom: 2px solid black;
-        transform: rotate(225deg); // Start down
-        transition: transform 0.3s; // Transition for chevron
+        transform: rotate(225deg); 
+        transition: transform 0.3s; 
 
         &.right {
-          transform: rotate(45deg); // Point right when open
+          transform: rotate(45deg); 
         }
 
         &.down {
-          transform: rotate(225deg); // Point down when closed
+          transform: rotate(225deg); 
         }
       }
     }
@@ -109,24 +121,25 @@ const handleCheckboxChange = (item) => {
   .opened {
     .dropdown-button {
       border-color:transparent ;
-      // padding: 10px 10px 15px;
     }
     .dropdown-menu{
-      max-height: 400px; // Max height when open
+      max-height: 400px; 
       overflow-y: auto;
     }
   }
 
   .dropdown-menu {
-    position: absolute; // Position absolute
-    top: 100%; // Position below the button
-    left: 0; // Align to the left
+    @include desktop{
+      position: absolute; 
+      }
+    top: 100%; 
+    left: 0; 
     background: white;
-    overflow-y: hidden; // Hide overflow for the transition
-    max-height: 0; // Start with max-height 0
-    width: 100%; // Full width
-    transition: max-height 0.3s ease, box-shadow 0.3s ease; // Smooth transition for max-height
-    z-index: 1000; // Layering
+    overflow-y: hidden; 
+    max-height: 0; 
+    width: 100%; 
+    transition: max-height 0.3s ease, box-shadow 0.3s ease; 
+    z-index: 1000; 
 
     // &.open {
     //   max-height: 400px; // Max height when open
