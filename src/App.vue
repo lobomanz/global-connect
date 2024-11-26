@@ -88,12 +88,5 @@ let projectList = ref( [
 ]); 
 </script>
 <style scoped lang="scss">
-// .project-wrapper{
-//   flex-wrap: wrap;
-//   display: flex;
-//   width: 1400px;
-//   .project-card{
-//     padding: 20px;
-//   }
-// }
+
 </style>
