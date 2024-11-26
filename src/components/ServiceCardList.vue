@@ -4,7 +4,7 @@
         <a
           v-for="item in row"
           :key="item.id"
-          :href="`/services/${item.id}`"
+          :href="`/service/${item.id}`"
           class="card-link"
         >
           <ServiceCard :data="item" />

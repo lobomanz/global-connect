@@ -27,9 +27,6 @@
   });
   
   const hover = ref(false);
-  let open = (ajdi) =>{
-    console.log(ajdi)
-  }
   </script>
   <style scoped lang="scss">
   
@@ -39,6 +36,7 @@
         width: 100%;
         margin-inline: auto;
         @include desktop{
+          padding: 20px;
           flex-wrap: wrap;
           display: flex;
           justify-content: center;
@@ -49,8 +47,9 @@
             height: 350px;
           padding: 15px;
           @include mobile{
+            
             width: auto;
-            height: 250px;
+            height: 230px;
           }
           a{
             text-decoration: none;

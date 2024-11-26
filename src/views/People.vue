@@ -10,10 +10,13 @@
   <PersonList ></PersonList>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .big-picture{
   margin: auto;
   margin-block:50px;
+  @include mobile{
+    margin: 0;
+  }
 }
 </style>
 <script setup>

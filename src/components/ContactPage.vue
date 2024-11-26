@@ -75,6 +75,9 @@
   <style lang="scss" scoped>
   img{
     max-width: 100%;
+    @include mobile{
+      display: none;
+    }
   }
   .wrapper{
       text-transform: uppercase;
@@ -82,10 +85,11 @@
       margin-inline: auto;
       padding-top: 50px;
       .contact-page {
-        display: flex;
+        @include desktop{
+          display: flex;
+          justify-content: space-evenly;
+        }
 
-        justify-content: space-evenly;
-      
         .contact-info,
         .contact-form {
           width: 100%;
@@ -163,9 +167,10 @@
           }
         }
       
-        .google-map {
-          margin-top: 40px;
-        }
+      }
+      .google-map {
+        display: none;
+        margin-top: 40px;
       }
   }
   </style>

@@ -44,7 +44,7 @@
   ];
   </script>
   
-  <style scoped>
+  <style scoped lang="scss">
   .person-list {
     display: flex;
     flex-wrap: wrap;
@@ -54,9 +54,13 @@
   }
   
   .person-card-wrapper {
-    width: 30%;
-    height: 400px;
-    margin: 10px; /* Optional: Add spacing between cards */
+    margin: 5px;
+    @include desktop{
+      margin: 10px; /* Optional: Add spacing between cards */
+      width: 30%;
+      height: 400px;
+      
+    }
   }
   </style>
   

@@ -39,13 +39,18 @@
   }
   </script>
   
-  <style scoped>
+  <style scoped lang="scss">
   .gallery-container {
     position: relative;
     margin-inline: 50px;
-    width: calc(100% -100px);
+    width: calc(100% - 100px);
     height: calc(100vh - 100px);
     overflow: hidden;
+    @include mobile{
+      width: 100%;
+      margin-inline: 0;
+      max-height: 350px;
+    }
   }
   
   .image-container {

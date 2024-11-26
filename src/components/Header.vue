@@ -46,7 +46,7 @@
   <header class="header-mobile">
     <div class="header-wrapper">
       <div class="header-top">
-        <p class="logo">GC</p>
+        <RouterLink to="/" class="logo">GC</RouterLink>
         <div class="hamburger" :class="{ open: isOpen }" @click="toggleHamburger">
           <span class="hamburger-top"></span>
           <span class="hamburger-middle"></span>
@@ -181,6 +181,8 @@ const toggleHamburger = () => {
         align-items: center;
         justify-content: space-between;
         .logo {
+          color: #333;
+          text-decoration: none;
           font-size: 26px;
           line-height: 30px;
           font-weight: bold;

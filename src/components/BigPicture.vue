@@ -23,12 +23,16 @@
   });
   </script>
   
-  <style scoped>
+  <style scoped lang="scss">
   .image-container {
     width: calc(100% - 210px);
     height: calc(100vh - 200px);
     position: relative;
     overflow: hidden;
+    @include mobile{
+      width: 100%;
+      max-height:200px ;
+    }
   }
   
   .image-wrapper {
@@ -52,7 +56,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    background-color: rgba(0, 0, 0, 0.5); 
   }
   
   .title {
@@ -61,10 +65,13 @@
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
-    font-size: 90px; /* Updated font size */
     text-align: center;
-    white-space: nowrap; /* Prevent line breaks */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Shadow for better contrast */
+    white-space: nowrap; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
+    font-size: 90px; 
+    @include mobile{
+      font-size: 50px;
+    }
   }
   </style>
   

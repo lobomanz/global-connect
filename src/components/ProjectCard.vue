@@ -1,10 +1,12 @@
 <template>
+  <div class="card-container">
+
     <div
       class="image-container"
       @mouseover="hover = true"
       @mouseleave="hover = false"
     >
-      <img :src="info.image" alt="" class="responsive-image" />
+      <img :src="info.image" alt="" class="responsive-image" loading="lazy"/>
       <div class="overlay" :class="{ visible: hover }"></div>
       <div class="text" :class="{ visible: hover }">
         <h2>{{ info.projectName }}</h2>
@@ -13,6 +15,7 @@
       </div>
     </div>
     <h3 class="title">{{ info.projectName }}</h3>
+  </div>
   </template>
   
   <script setup>
@@ -37,6 +40,10 @@
   </script>
   
   <style scoped lang="scss">
+  .card-container{
+    padding: 10px;
+    margin-inline: 10px;
+  }
   a{
     text-decoration: none;
   }
@@ -85,6 +92,7 @@
     opacity: 1; /* Full opacity on hover */
   }
   .title{
+    font-size: 18px;
     color: black;
     text-transform: uppercase;
     text-decoration: none !important;

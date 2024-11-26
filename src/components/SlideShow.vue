@@ -78,7 +78,7 @@ const restartSlideshow = () => {
   });
   </script>
   
-  <style scoped>
+  <style scoped lang="scss">
   .show-class{
     z-index: 1000;
     opacity: 1;
@@ -127,6 +127,9 @@ const restartSlideshow = () => {
     bottom: 20px;
     display: flex;
     gap: 90px;
+    @include mobile{
+      gap: 15px;
+    }
   }
   
   .dot {
