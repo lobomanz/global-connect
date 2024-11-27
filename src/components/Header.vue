@@ -3,42 +3,42 @@
   <div :class="{ 'space-top': mode != 1 && mode != 2 }"></div>
   <header class="fixed-header" :class="{ transparent: mode == 1 || mode == 2 }">
     <div class="inside-header">
-      <router-link
+      <RouterLink 
         to="/"
         class="logo"
         :class="{ 'color-white': mode == 1 || mode == 2 }"
-        >global connect</router-link
+        >global connect</RouterLink 
       >
       <div class="nav-links">
-        <router-link
+        <RouterLink 
           to="/refrences"
           class="nav-item"
           :class="{ 'hover-white': mode == 2 }"
-          >refrences</router-link
+          >refrences</RouterLink  
         >
-        <router-link
+        <RouterLink 
           to="/services"
           class="nav-item"
           :class="{ 'hover-white': mode == 2 }"
-          >services</router-link
+          >services</RouterLink 
         >
-        <router-link
+        <RouterLink 
           to="/people"
           class="nav-item"
           :class="{ 'hover-white': mode == 2 }"
-          >people</router-link
+          >people</RouterLink 
         >
-        <router-link
+        <RouterLink 
           to="/work"
           class="nav-item"
           :class="{ 'hover-white': mode == 2 }"
-          >work</router-link
+          >work</RouterLink 
         >
-        <router-link
+        <RouterLink 
           to="/contact"
           class="nav-item"
           :class="{ 'hover-white': mode == 2 }"
-          >contact</router-link
+          >contact</RouterLink  
         >
       </div>
     </div>
@@ -46,7 +46,7 @@
   <header class="header-mobile">
     <div class="header-wrapper">
       <div class="header-top">
-        <router-link to="/" class="logo">GC</router-link>
+        <RouterLink  to="/" class="logo">GC</RouterLink  >
         <div class="hamburger" :class="{ open: isOpen }" @click="toggleHamburger">
           <span class="hamburger-top"></span>
           <span class="hamburger-middle"></span>
@@ -54,18 +54,18 @@
         </div>
       </div>
       <div class="menu" :class="{ open: isOpen }">
-        <router-link @click="toggleHamburger" to="/refrences" class="nav-item">refrences</router-link>
-        <router-link @click="toggleHamburger" to="/services" class="nav-item">services</router-link>
-        <router-link @click="toggleHamburger" to="/people" class="nav-item">people</router-link>
-        <router-link @click="toggleHamburger" to="/work" class="nav-item">work</router-link>
-        <router-link @click="toggleHamburger" to="/contact" class="nav-item">contact</router-link>
+        <RouterLink  @click="toggleHamburger" to="/refrences" class="nav-item">refrences</RouterLink >
+        <RouterLink  @click="toggleHamburger" to="/services" class="nav-item">services</RouterLink >
+        <RouterLink  @click="toggleHamburger" to="/people" class="nav-item">people</RouterLink >
+        <RouterLink  @click="toggleHamburger" to="/work" class="nav-item">work</RouterLink >
+        <RouterLink  @click="toggleHamburger" to="/contact" class="nav-item">contact</RouterLink >
       </div>
     </div>
   </header>
 </template>
 
 <script setup>
-import { router-link, RouterView } from "vue-router";
+import { RouterLink , RouterView } from "vue-router";
 import { ref, defineProps } from "vue";
 const props = defineProps({
   mode: {
