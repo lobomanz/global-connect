@@ -8,8 +8,8 @@
               <h1>Kontakt</h1>
               <h2>Call Us:</h2>
               <div class="phone-numbers">
-                <a :href="'tel:+385994554118'">+385 994554118</a>
-                <a :href="'tel:+385955559548'">+385 955559548</a>
+                <a :href="'tel:+385994554118'">Deni Pavić +385 994554118</a>
+                <a :href="'tel:+385955559548'">Vedran Vuletić +385 955559548</a>
               </div>
               <h2>Contact Us:</h2>
               <div class="emails">
@@ -74,7 +74,7 @@
   
   <style lang="scss" scoped>
   img{
-    max-width: 100%;
+    width: 100vw;
     @include mobile{
       display: none;
     }

@@ -11,11 +11,12 @@
       >
       <div class="nav-links">
         <RouterLink 
-          to="/refrences"
+          to="/work"
           class="nav-item"
           :class="{ 'hover-white': mode == 2 }"
-          >refrences</RouterLink  
+          >work</RouterLink 
         >
+        
         <RouterLink 
           to="/services"
           class="nav-item"
@@ -29,10 +30,10 @@
           >people</RouterLink 
         >
         <RouterLink 
-          to="/work"
+          to="/refrences"
           class="nav-item"
           :class="{ 'hover-white': mode == 2 }"
-          >work</RouterLink 
+          >refrences</RouterLink  
         >
         <RouterLink 
           to="/contact"

@@ -23,7 +23,6 @@
 import Header from '../components/Header.vue'
 import PersonList from '../components/PersonList.vue'
 import BigPicture from '../components/BigPicture.vue'
-import { RouterLink, RouterView } from 'vue-router'
 
 const userProfile = {
   image: '/images/oc_varazdin_1.png',
