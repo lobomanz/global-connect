@@ -44,12 +44,12 @@ const handleCheckboxChange = (item) => {
 <style lang="scss" scoped>
 .dropdown {
   margin-inline: 10px;
+  position: relative;
   @include desktop{
     width: 200px; 
     margin: 10px; 
 
   }
-  position: relative;
 
   &.open {
     .dropdown-container {
@@ -129,9 +129,7 @@ const handleCheckboxChange = (item) => {
   }
 
   .dropdown-menu {
-    @include desktop{
-      position: absolute; 
-      }
+    
     top: 100%; 
     left: 0; 
     background: white;
@@ -145,6 +143,9 @@ const handleCheckboxChange = (item) => {
     //   max-height: 400px; // Max height when open
     //   overflow-y: scroll;
     // }
+    @include desktop{
+      position: absolute; 
+      }
   }
 
   .dropdown-item {
