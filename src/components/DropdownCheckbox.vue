@@ -79,9 +79,7 @@ const handleCheckboxChange = (item) => {
       }
 
     .dropdown-button {
-      @include desktop{
-        border-bottom: 3px solid black; 
-      }
+      
       transition: 0.3s;
       border: none;
       display: flex;
@@ -93,7 +91,9 @@ const handleCheckboxChange = (item) => {
       cursor: pointer;
       width: 100%; // Full width
 
-      
+      @include desktop{
+        border-bottom: 3px solid black; 
+      }
 
       .dropdown-title {
         font-size: 18px; // Title font size
