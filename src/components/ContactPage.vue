@@ -9,19 +9,26 @@
               <h2>Call Us:</h2>
               <div class="phone-numbers">
                 <a :href="'tel:+385994554118'">Deni Pavić +385 994554118</a>
-                <a :href="'tel:+385955559548'">Vedran Vuletić +385 955559548</a>
+                <a :href="'tel:+385981608322'">Vedran Vuletić +385 981608322</a>
               </div>
               <h2>Contact Us:</h2>
               <div class="emails">
                 <a :href="'mailto:d.arhitektura@globalconnect-doo.com'">d.arhitektura@globalconnect-doo.com</a>
-                <a :href="'mailto:v.arhitektura@globalconnect-doo.com'">v.arhitektura@globalconnect-doo.com</a>
+                <a :href="'mailto:v.urbanizam@globalconnect-doo.com'">v.urbanizam@globalconnect-doo.com</a>
               </div>
               <h2>Address:</h2>
+              <a
+                :href="'https://maps.app.goo.gl/FLbBYHk4qaqHwy1w5'"
+                target="_blank"
+              >
+                Srebernjak 126, 10 000, Zagreb
+              </a>
+              <h2>Office address:</h2>
               <a
                 :href="'https://www.google.com/maps/search/?api=1&query=Ul.+Milana+Pavelica+1b,+10000,+Zagreb'"
                 target="_blank"
               >
-                Ul. Milana Pavelića 1b, 10000, Zagreb
+                Milana Pavelića 1B, 10 000, Zagreb
               </a>
             </div>
           </div>
@@ -52,6 +59,10 @@
           ></iframe>
         </div>
     </div>
+
+    <div class="map-container">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2780.9648223157096!2d16.0188304!3d45.8119629!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4765d7cc68b52cd5%3A0xdc8de2b8ee42f88!2sUl.%20Milana%20Paveli%C4%87a%201b%2C%2010000%2C%20Zagreb!5e0!3m2!1shr!2shr!4v1733090219416!5m2!1shr!2shr" width="100%" height="450" style="border:0; margin-top: 20px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
   </template>
   
   <script setup>
@@ -74,7 +85,7 @@
   
   <style lang="scss" scoped>
   img{
-    width: 100vw;
+    width: 100%;
     @include mobile{
       display: none;
     }

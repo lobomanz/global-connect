@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <div class="filters">
+    <!-- <div class="filters">
       <DropdownCheckbox 
         title="Select Year" 
         :items="uniqueYears" 
@@ -29,7 +29,7 @@
         :is-open="openDropdown === 'project'"
         @toggle-dropdown="toggleDropdown('project')"
       />
-    </div>
+    </div> -->
     
     <ul class="reference-list">
       <li v-for="item in filteredItems" :key="item.title" class="reference-item">
