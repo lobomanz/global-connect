@@ -10,8 +10,8 @@
       <div class="overlay" :class="{ visible: hover }"></div>
       <div class="text" :class="{ visible: hover }">
         <h2>{{ info.projectName }}</h2>
-        <p>{{ info.projectInfo }}</p>
         <p>{{ info.projectDate }}</p>
+        <p>{{ info.projectInfo }}</p>
       </div>
     </div>
     <h3 class="title">{{ info.projectName }}</h3>

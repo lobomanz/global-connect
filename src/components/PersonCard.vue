@@ -1,28 +1,29 @@
 <template>
-    <div class="profile-card">
-      <img :src="profile.image" alt="Profile Picture" class="profile-image"  loading="lazy"/>
-      <p class="profile-name">{{ profile.name }}</p>
-      <p class="profile-title">{{ profile.title }}</p>
-    </div>
-  </template>
-  
-  <script setup>
-  import { defineProps } from 'vue';
-  
-  const props = defineProps({
-    profile: {
-      type: Object,
-      required: true,
-      validator: (value) => {
-        return (
-          value.image && typeof value.image === 'string' &&
-          value.name && typeof value.name === 'string' &&
-          value.title && typeof value.title === 'string'
-        );
-      },
+  <div class="profile-card">
+    <img :src="profile.image" alt="Profile Picture" class="profile-image" loading="lazy"/>
+    <p class="profile-name">{{ profile.name }}</p>
+    <p class="profile-title" v-html="profile.title"></p>
+  </div>
+</template>
+
+<script setup>
+import { defineProps } from 'vue';
+
+const props = defineProps({
+  profile: {
+    type: Object,
+    required: true,
+    validator: (value) => {
+      return (
+        value.image && typeof value.image === 'string' &&
+        value.name && typeof value.name === 'string' &&
+        value.title && typeof value.title === 'string' 
+      );
     },
-  });
-  </script>
+  },
+});
+</script>
+
   
   <style scoped>
   .profile-card {
