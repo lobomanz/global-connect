@@ -5,6 +5,7 @@ import Refrences from '@/views/Refrences.vue'
 import Project from '@/views/Project.vue'
 import Contact from '@/views/Contact.vue'
 import Services from '@/views/Services.vue'
+import Service from '@/views/Service.vue'
 import People from '@/views/People.vue'
 
 const router = createRouter({
@@ -49,7 +50,7 @@ const router = createRouter({
     {
       path: '/service/:id', 
       name: 'service',
-      component: Project,
+      component: Service,
     },
   ],
   scrollBehavior(to, from, savedPosition) {

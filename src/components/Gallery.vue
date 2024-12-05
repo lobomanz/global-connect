@@ -1,5 +1,5 @@
 <template>
-    <div class="gallery-container">
+    <div :class="{ 'gallery-container-service': mode == '2' , 'gallery-container': mode == '1' }">
         <div class="left">
 
             <button class="chevron left-one" @click="prevImage"></button>
@@ -26,8 +26,17 @@
       type: Array,
       requiwhite: true,
     },
+    mode: {
+    type: String,
+    required: false,
+    validator: (value) => {
+      return value !== undefined;
+    },
+  },
   });
   
+
+
   const currentIndex = ref(0);
   
   function nextImage() {
@@ -45,6 +54,18 @@
     margin-inline: 50px;
     width: calc(100% - 100px);
     height: calc(100vh - 100px);
+    overflow: hidden;
+    @include mobile{
+      width: 100%;
+      margin-inline: 0;
+      max-height: 350px;
+    }
+  }
+  .gallery-container-service {
+    position: relative;
+    margin-inline: 200px;
+    width: calc(100% - 400px);
+    height: calc(100vh - 300px);
     overflow: hidden;
     @include mobile{
       width: 100%;

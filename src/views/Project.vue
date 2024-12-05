@@ -2,7 +2,7 @@
     <Header>
       
     </Header>
-    <Gallery :images="foundList"/>
+    <Gallery :images="foundList" mode="1"/>
     <BlogText :content="content"></BlogText>
 
   </template>

@@ -3,7 +3,7 @@
       <div class="row" v-for="(row, rowIndex) in rows" :key="rowIndex">
         <router-link
           v-for="item in row"
-          :to="{ name: 'project', params: { id: item.id } }"
+          :to="{ name: 'service', params: { id: item.id } }"
           :key="item.id"
           class="card-link"
         >
