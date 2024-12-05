@@ -14,32 +14,32 @@
           to="/work"
           class="nav-item"
           :class="{ 'hover-white': mode == 2 }"
-          >work</RouterLink 
+          >projekti</RouterLink 
         >
         
         <RouterLink 
           to="/services"
           class="nav-item"
           :class="{ 'hover-white': mode == 2 }"
-          >services</RouterLink 
+          >usluge</RouterLink 
         >
         <RouterLink 
           to="/people"
           class="nav-item"
           :class="{ 'hover-white': mode == 2 }"
-          >people</RouterLink 
+          >ured</RouterLink 
         >
         <RouterLink 
           to="/refrences"
           class="nav-item"
           :class="{ 'hover-white': mode == 2 }"
-          >refrences</RouterLink  
+          >reference</RouterLink  
         >
         <RouterLink 
           to="/contact"
           class="nav-item"
           :class="{ 'hover-white': mode == 2 }"
-          >contact</RouterLink  
+          >kontakt</RouterLink  
         >
       </div>
     </div>

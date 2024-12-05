@@ -6,24 +6,24 @@
           <div class="contact-info">
             <div class="info-content">
               <h1>Kontakt</h1>
-              <h2>Call Us:</h2>
+              <h2>Nazovite nas:</h2>
               <div class="phone-numbers">
                 <a :href="'tel:+385994554118'">Deni Pavić +385 994554118</a>
                 <a :href="'tel:+385981608322'">Vedran Vuletić +385 981608322</a>
               </div>
-              <h2>Contact Us:</h2>
+              <h2>Naš e-mail:</h2>
               <div class="emails">
                 <a :href="'mailto:d.arhitektura@globalconnect-doo.com'">d.arhitektura@globalconnect-doo.com</a>
                 <a :href="'mailto:v.urbanizam@globalconnect-doo.com'">v.urbanizam@globalconnect-doo.com</a>
               </div>
-              <h2>Address:</h2>
+              <h2>Adresa:</h2>
               <a
                 :href="'https://maps.app.goo.gl/FLbBYHk4qaqHwy1w5'"
                 target="_blank"
               >
                 Srebernjak 126, 10 000, Zagreb
               </a>
-              <h2>Office address:</h2>
+              <h2>Adresa ureda:</h2>
               <a
                 :href="'https://www.google.com/maps/search/?api=1&query=Ul.+Milana+Pavelica+1b,+10000,+Zagreb'"
                 target="_blank"
