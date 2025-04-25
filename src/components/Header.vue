@@ -115,8 +115,7 @@ const toggleHamburger = () => {
   }
   .logo {
     text-decoration: none;
-    color: var(--color-text);
-    /* height: 80%; Adjust logo size */
+    color: inherit;
     font-size: 40px;
     font-weight: bold;
     padding-bottom: 10px;
@@ -130,10 +129,10 @@ const toggleHamburger = () => {
 
   .nav-item {
     transition: 0.3s;
-    margin: 0 15px; /* Space between items */
-    cursor: pointer; /* Change cursor to pointer */
-    text-decoration: none; /* Remove underline */
-    color: inherit; /* Inherit color from parent */
+    margin: 0 15px; 
+    cursor: pointer; 
+    text-decoration: none; 
+    color: inherit; 
     &:hover {
       color: black;
       opacity: 0.6;
@@ -141,7 +140,7 @@ const toggleHamburger = () => {
   }
   .hover-white {
     transition: 0.3s;
-    color: inherit; /* Inherit color from parent */
+    color: inherit; 
     &:hover {
       color: white;
       opacity: 0.7;
@@ -153,7 +152,6 @@ const toggleHamburger = () => {
 }
 
 .transparent {
-  // background: transparent;
   color: #fff;
   background: linear-gradient(
     to bottom,
