@@ -30,14 +30,14 @@
         @toggle-dropdown="toggleDropdown('project')"
       />
     </div> -->
-    
+
     <ul class="reference-list">
       <li v-for="item in filteredItems" :key="item.title" class="reference-item">
         <span class="year">{{ item.year }}</span>
         <span class="title">{{ item.title }}</span>
-        <span class="investor">{{ item.investor }}</span>
+        <!-- <span class="investor">{{ item.investor }}</span>
         <span class="solution">{{ item.solution }}</span>
-        <span class="project">{{ item.project }}</span>
+        <span class="project">{{ item.project }}</span> -->
       </li>
     </ul>
   </div>
@@ -97,13 +97,15 @@ const filteredItems = computed(() => {
 <style scoped lang="scss">
 .wrapper {
   max-width: 1000px;
-  margin: 0 auto; /* Center the wrapper */
+  margin: 0 auto;
+  /* Center the wrapper */
 }
 
 .filters {
   flex-wrap: wrap;
   margin-bottom: 20px;
-  @include desktop{
+
+  @include desktop {
     display: flex;
   }
 }
@@ -111,8 +113,9 @@ const filteredItems = computed(() => {
 .reference-list {
   list-style-type: none;
   padding: 0;
-  margin-top: 50px; 
-  @include mobile{
+  margin-top: 50px;
+
+  @include mobile {
     max-width: 300px;
     margin: auto;
   }
@@ -121,27 +124,40 @@ const filteredItems = computed(() => {
 .reference-item {
   display: flex;
   align-items: center;
-  margin: 10px ;
+  margin: 10px;
 
   .year {
-    font-weight: bold; /* Bold for the year */
-    font-size: 16px; /* Font size for year */
-    margin-right: 5px; /* Spacing for year */
+    font-weight: bold;
+    /* Bold for the year */
+    font-size: 16px;
+    /* Font size for year */
+    margin-right: 5px;
+    /* Spacing for year */
   }
 
   .title {
-    font-weight: normal; /* Normal font weight for title */
-    font-size: 16px; /* Font size for title */
-    text-transform: uppercase; /* Uppercase for title */
-    margin-right: 5px; /* Spacing for title */
+    font-weight: normal;
+    /* Normal font weight for title */
+    font-size: 16px;
+    /* Font size for title */
+    // text-transform: uppercase;
+    /* Uppercase for title */
+    margin-right: 5px;
+    /* Spacing for title */
   }
 
   span {
-    font-size: 16px; /* Font size for other properties */
-    margin-right: 5px; /* Spacing for other properties */
+    font-size: 16px;
+    /* Font size for other properties */
+    margin-right: 5px;
+    /* Spacing for other properties */
   }
-  @include mobile{
-    .investor,.solution,.project{
+
+  @include mobile {
+
+    .investor,
+    .solution,
+    .project {
       display: none;
     }
   }
@@ -149,8 +165,8 @@ const filteredItems = computed(() => {
 
 /* Style for separator */
 .reference-item span:not(:last-child)::after {
-  @include desktop{
-    content: ' - '; 
+  @include desktop {
+    content: ' - ';
   }
 }
 </style>

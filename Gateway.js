@@ -1,4 +1,3 @@
-// Generic fetch function using relative path
 async function fetchData(endpoint) {
     const response = await fetch(endpoint);
     if (!response.ok) {
@@ -7,7 +6,6 @@ async function fetchData(endpoint) {
     return response.json();
 }
 
-// Gateway object using relative paths with 'id' at the end
 const Gateway = {
     async getProjectPictures(id) {
         return fetchData(`/projects/pictures/${id}`);

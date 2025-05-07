@@ -1,6 +1,7 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import Header from '../components/Header.vue'
+import Footer from '../components/Footer.vue'
 import ProjectList from '../components/ProjectList.vue'
 import { ref, onMounted } from 'vue'
 import Gateway from '../../Gateway'
@@ -110,10 +111,12 @@ onMounted(async () => {
 });
 </script>
 <template>
-    <Header>
-      
-    </Header>
-    <ProjectList :projectList = projectList>
-  
-    </ProjectList>
-  </template>
+  <Header>
+
+  </Header>
+  <ProjectList :projectList=projectList>
+
+  </ProjectList>
+  <Footer></Footer>
+
+</template>

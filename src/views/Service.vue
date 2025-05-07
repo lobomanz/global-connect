@@ -1,221 +1,224 @@
 <template>
-    <Header>
-      
-    </Header>
-    <Gallery :images="foundList" mode="2"/>
-    <BlogText :content="content"></BlogText>
+  <Header>
 
-  </template>
-  
-  
-  <script setup>
+  </Header>
+  <Gallery :images="foundList" mode="2" />
+  <BlogText :content="content"></BlogText>
+  <Footer></Footer>
+
+</template>
+
+
+<script setup>
 import { useRoute } from 'vue-router';
 import { ref, onMounted } from 'vue';
 import Header from '../components/Header.vue';
 import BlogText from '../components/BlogText.vue';
 import Gallery from '../components/Gallery.vue';
+import Gateway from '../../Gateway';
+import Footer from '../components/Footer.vue'
 
 // Mock Gateway fetch helper
-const Gateway = {
-  async getServicePictures(id) {
-    return fetchData(`/services/pictures/${id}`);
-  },
-  async getServiceRichText(id) {
-    return fetchData(`/services/richtext/${id}`);
-  },
-};
+// const Gateway = {
+//   async getServicePictures(id) {
+//     return fetchData(`/services/pictures/${id}`);
+//   },
+//   async getServiceRichText(id) {
+//     return fetchData(`/services/richtext/${id}`);
+//   },
+// };
 
 const route = useRoute();
 const workId = parseInt(route.params.id);
 
 const imagesList = ref([
-{
-      list: [
-          '/images/copot_kuca_1.png',
-          '/images/copot_kuca_2.png',
-          '/images/copot_kuca_3.png',
-          '/images/copot_kuca_4.png',
-          '/images/copot_kuca_5.png',
-      ],
-      id: 1
+  {
+    list: [
+      '/images/copot_kuca_1.png',
+      '/images/copot_kuca_2.png',
+      '/images/copot_kuca_3.png',
+      '/images/copot_kuca_4.png',
+      '/images/copot_kuca_5.png',
+    ],
+    id: 1
   },
   {
-      list: [
-          '/images/oc_varazdin_1.png',
-          '/images/oc_varazdin_2.png',
-          '/images/oc_varazdin_3.png',
-          '/images/oc_varazdin_4.png',
-          '/images/oc_varazdin_5.png',
-          '/images/oc_varazdin_6.png',
-          '/images/oc_varazdin_7.png',
-          '/images/oc_varazdin_8.png',
-      ],
-      id: 2
+    list: [
+      '/images/oc_varazdin_1.png',
+      '/images/oc_varazdin_2.png',
+      '/images/oc_varazdin_3.png',
+      '/images/oc_varazdin_4.png',
+      '/images/oc_varazdin_5.png',
+      '/images/oc_varazdin_6.png',
+      '/images/oc_varazdin_7.png',
+      '/images/oc_varazdin_8.png',
+    ],
+    id: 2
   },
   {
-      list: [
-          '/images/oc_cakovec_1.png',
-          '/images/oc_cakovec_2.png',
-          '/images/oc_cakovec_3.png',
-          '/images/oc_cakovec_4.png',
-          '/images/oc_cakovec_5.png',
-          '/images/oc_cakovec_6.png',
-      ],
-      id: 3
+    list: [
+      '/images/oc_cakovec_1.png',
+      '/images/oc_cakovec_2.png',
+      '/images/oc_cakovec_3.png',
+      '/images/oc_cakovec_4.png',
+      '/images/oc_cakovec_5.png',
+      '/images/oc_cakovec_6.png',
+    ],
+    id: 3
   },
   {
-      list: [
-          '/images/drustveni_dom_1.jpeg',
-          '/images/drustveni_dom_2.jpeg',
-          '/images/drustveni_dom_3.jpeg',
-          '/images/drustveni_dom_4.jpeg',
-          '/images/drustveni_dom_5.jpeg',
-          '/images/drustveni_dom_6.jpeg',
-          '/images/drustveni_dom_7.jpeg',
-          '/images/drustveni_dom_8.jpeg',
-          '/images/drustveni_dom_9.jpeg',
-      ],
-      id: 4
+    list: [
+      '/images/drustveni_dom_1.jpeg',
+      '/images/drustveni_dom_2.jpeg',
+      '/images/drustveni_dom_3.jpeg',
+      '/images/drustveni_dom_4.jpeg',
+      '/images/drustveni_dom_5.jpeg',
+      '/images/drustveni_dom_6.jpeg',
+      '/images/drustveni_dom_7.jpeg',
+      '/images/drustveni_dom_8.jpeg',
+      '/images/drustveni_dom_9.jpeg',
+    ],
+    id: 4
   },
   {
-      list: [
-          '/images/drustveni_dom_1.jpeg',
-          '/images/drustveni_dom_2.jpeg',
-          '/images/drustveni_dom_3.jpeg',
-          '/images/drustveni_dom_4.jpeg',
-          '/images/drustveni_dom_5.jpeg',
-          '/images/drustveni_dom_6.jpeg',
-          '/images/drustveni_dom_7.jpeg',
-          '/images/drustveni_dom_8.jpeg',
-          '/images/drustveni_dom_9.jpeg',
-      ],
-      id: 5
+    list: [
+      '/images/drustveni_dom_1.jpeg',
+      '/images/drustveni_dom_2.jpeg',
+      '/images/drustveni_dom_3.jpeg',
+      '/images/drustveni_dom_4.jpeg',
+      '/images/drustveni_dom_5.jpeg',
+      '/images/drustveni_dom_6.jpeg',
+      '/images/drustveni_dom_7.jpeg',
+      '/images/drustveni_dom_8.jpeg',
+      '/images/drustveni_dom_9.jpeg',
+    ],
+    id: 5
   },
   {
-      list: [
-          '/images/drustveni_dom_1.jpeg',
-          '/images/drustveni_dom_2.jpeg',
-          '/images/drustveni_dom_3.jpeg',
-          '/images/drustveni_dom_4.jpeg',
-          '/images/drustveni_dom_5.jpeg',
-          '/images/drustveni_dom_6.jpeg',
-          '/images/drustveni_dom_7.jpeg',
-          '/images/drustveni_dom_8.jpeg',
-          '/images/drustveni_dom_9.jpeg',
-      ],
-      id: 6
+    list: [
+      '/images/drustveni_dom_1.jpeg',
+      '/images/drustveni_dom_2.jpeg',
+      '/images/drustveni_dom_3.jpeg',
+      '/images/drustveni_dom_4.jpeg',
+      '/images/drustveni_dom_5.jpeg',
+      '/images/drustveni_dom_6.jpeg',
+      '/images/drustveni_dom_7.jpeg',
+      '/images/drustveni_dom_8.jpeg',
+      '/images/drustveni_dom_9.jpeg',
+    ],
+    id: 6
   },
   {
-      list: [
-          '/images/drustveni_dom_1.jpeg',
-          '/images/drustveni_dom_2.jpeg',
-          '/images/drustveni_dom_3.jpeg',
-          '/images/drustveni_dom_4.jpeg',
-          '/images/drustveni_dom_5.jpeg',
-          '/images/drustveni_dom_6.jpeg',
-          '/images/drustveni_dom_7.jpeg',
-          '/images/drustveni_dom_8.jpeg',
-          '/images/drustveni_dom_9.jpeg',
-      ],
-      id: 7
+    list: [
+      '/images/drustveni_dom_1.jpeg',
+      '/images/drustveni_dom_2.jpeg',
+      '/images/drustveni_dom_3.jpeg',
+      '/images/drustveni_dom_4.jpeg',
+      '/images/drustveni_dom_5.jpeg',
+      '/images/drustveni_dom_6.jpeg',
+      '/images/drustveni_dom_7.jpeg',
+      '/images/drustveni_dom_8.jpeg',
+      '/images/drustveni_dom_9.jpeg',
+    ],
+    id: 7
   },
   {
-      list: [
-          '/images/drustveni_dom_1.jpeg',
-          '/images/drustveni_dom_2.jpeg',
-          '/images/drustveni_dom_3.jpeg',
-          '/images/drustveni_dom_4.jpeg',
-          '/images/drustveni_dom_5.jpeg',
-          '/images/drustveni_dom_6.jpeg',
-          '/images/drustveni_dom_7.jpeg',
-          '/images/drustveni_dom_8.jpeg',
-          '/images/drustveni_dom_9.jpeg',
-      ],
-      id: 8
+    list: [
+      '/images/drustveni_dom_1.jpeg',
+      '/images/drustveni_dom_2.jpeg',
+      '/images/drustveni_dom_3.jpeg',
+      '/images/drustveni_dom_4.jpeg',
+      '/images/drustveni_dom_5.jpeg',
+      '/images/drustveni_dom_6.jpeg',
+      '/images/drustveni_dom_7.jpeg',
+      '/images/drustveni_dom_8.jpeg',
+      '/images/drustveni_dom_9.jpeg',
+    ],
+    id: 8
   },
   {
-      list: [
-          '/images/drustveni_dom_1.jpeg',
-          '/images/drustveni_dom_2.jpeg',
-          '/images/drustveni_dom_3.jpeg',
-          '/images/drustveni_dom_4.jpeg',
-          '/images/drustveni_dom_5.jpeg',
-          '/images/drustveni_dom_6.jpeg',
-          '/images/drustveni_dom_7.jpeg',
-          '/images/drustveni_dom_8.jpeg',
-          '/images/drustveni_dom_9.jpeg',
-      ],
-      id: 9
+    list: [
+      '/images/drustveni_dom_1.jpeg',
+      '/images/drustveni_dom_2.jpeg',
+      '/images/drustveni_dom_3.jpeg',
+      '/images/drustveni_dom_4.jpeg',
+      '/images/drustveni_dom_5.jpeg',
+      '/images/drustveni_dom_6.jpeg',
+      '/images/drustveni_dom_7.jpeg',
+      '/images/drustveni_dom_8.jpeg',
+      '/images/drustveni_dom_9.jpeg',
+    ],
+    id: 9
   },
   {
-      list: [
-          '/images/drustveni_dom_1.jpeg',
-          '/images/drustveni_dom_2.jpeg',
-          '/images/drustveni_dom_3.jpeg',
-          '/images/drustveni_dom_4.jpeg',
-          '/images/drustveni_dom_5.jpeg',
-          '/images/drustveni_dom_6.jpeg',
-          '/images/drustveni_dom_7.jpeg',
-          '/images/drustveni_dom_8.jpeg',
-          '/images/drustveni_dom_9.jpeg',
-      ],
-      id: 10
+    list: [
+      '/images/drustveni_dom_1.jpeg',
+      '/images/drustveni_dom_2.jpeg',
+      '/images/drustveni_dom_3.jpeg',
+      '/images/drustveni_dom_4.jpeg',
+      '/images/drustveni_dom_5.jpeg',
+      '/images/drustveni_dom_6.jpeg',
+      '/images/drustveni_dom_7.jpeg',
+      '/images/drustveni_dom_8.jpeg',
+      '/images/drustveni_dom_9.jpeg',
+    ],
+    id: 10
   },
   {
-      list: [
-          '/images/drustveni_dom_1.jpeg',
-          '/images/drustveni_dom_2.jpeg',
-          '/images/drustveni_dom_3.jpeg',
-          '/images/drustveni_dom_4.jpeg',
-          '/images/drustveni_dom_5.jpeg',
-          '/images/drustveni_dom_6.jpeg',
-          '/images/drustveni_dom_7.jpeg',
-          '/images/drustveni_dom_8.jpeg',
-          '/images/drustveni_dom_9.jpeg',
-      ],
-      id: 11
+    list: [
+      '/images/drustveni_dom_1.jpeg',
+      '/images/drustveni_dom_2.jpeg',
+      '/images/drustveni_dom_3.jpeg',
+      '/images/drustveni_dom_4.jpeg',
+      '/images/drustveni_dom_5.jpeg',
+      '/images/drustveni_dom_6.jpeg',
+      '/images/drustveni_dom_7.jpeg',
+      '/images/drustveni_dom_8.jpeg',
+      '/images/drustveni_dom_9.jpeg',
+    ],
+    id: 11
   },
   {
-      list: [
-          '/images/drustveni_dom_1.jpeg',
-          '/images/drustveni_dom_2.jpeg',
-          '/images/drustveni_dom_3.jpeg',
-          '/images/drustveni_dom_4.jpeg',
-          '/images/drustveni_dom_5.jpeg',
-          '/images/drustveni_dom_6.jpeg',
-          '/images/drustveni_dom_7.jpeg',
-          '/images/drustveni_dom_8.jpeg',
-          '/images/drustveni_dom_9.jpeg',
-      ],
-      id: 12
+    list: [
+      '/images/drustveni_dom_1.jpeg',
+      '/images/drustveni_dom_2.jpeg',
+      '/images/drustveni_dom_3.jpeg',
+      '/images/drustveni_dom_4.jpeg',
+      '/images/drustveni_dom_5.jpeg',
+      '/images/drustveni_dom_6.jpeg',
+      '/images/drustveni_dom_7.jpeg',
+      '/images/drustveni_dom_8.jpeg',
+      '/images/drustveni_dom_9.jpeg',
+    ],
+    id: 12
   },
   {
-      list: [
-          '/images/drustveni_dom_1.jpeg',
-          '/images/drustveni_dom_2.jpeg',
-          '/images/drustveni_dom_3.jpeg',
-          '/images/drustveni_dom_4.jpeg',
-          '/images/drustveni_dom_5.jpeg',
-          '/images/drustveni_dom_6.jpeg',
-          '/images/drustveni_dom_7.jpeg',
-          '/images/drustveni_dom_8.jpeg',
-          '/images/drustveni_dom_9.jpeg',
-      ],
-      id: 13
+    list: [
+      '/images/drustveni_dom_1.jpeg',
+      '/images/drustveni_dom_2.jpeg',
+      '/images/drustveni_dom_3.jpeg',
+      '/images/drustveni_dom_4.jpeg',
+      '/images/drustveni_dom_5.jpeg',
+      '/images/drustveni_dom_6.jpeg',
+      '/images/drustveni_dom_7.jpeg',
+      '/images/drustveni_dom_8.jpeg',
+      '/images/drustveni_dom_9.jpeg',
+    ],
+    id: 13
   },
   {
-      list: [
-          '/images/drustveni_dom_1.jpeg',
-          '/images/drustveni_dom_2.jpeg',
-          '/images/drustveni_dom_3.jpeg',
-          '/images/drustveni_dom_4.jpeg',
-          '/images/drustveni_dom_5.jpeg',
-          '/images/drustveni_dom_6.jpeg',
-          '/images/drustveni_dom_7.jpeg',
-          '/images/drustveni_dom_8.jpeg',
-          '/images/drustveni_dom_9.jpeg',
-      ],
-      id: 14
+    list: [
+      '/images/drustveni_dom_1.jpeg',
+      '/images/drustveni_dom_2.jpeg',
+      '/images/drustveni_dom_3.jpeg',
+      '/images/drustveni_dom_4.jpeg',
+      '/images/drustveni_dom_5.jpeg',
+      '/images/drustveni_dom_6.jpeg',
+      '/images/drustveni_dom_7.jpeg',
+      '/images/drustveni_dom_8.jpeg',
+      '/images/drustveni_dom_9.jpeg',
+    ],
+    id: 14
   },
 ]);
 
@@ -308,17 +311,17 @@ onMounted(async () => {
 });
 </script>
 
-  <style lang="scss">
-  .wrapper{
-    h2{
-        font-size: 32px;
-        padding-bottom: 20px;
-        padding-top: 10px;
-        font-weight: 500;
-    }
-    p{
-        font-size: 18px;
-    }
+<style lang="scss">
+.wrapper {
+  h2 {
+    font-size: 32px;
+    padding-bottom: 20px;
+    padding-top: 10px;
+    font-weight: 500;
   }
- 
+
+  p {
+    font-size: 18px;
+  }
+}
 </style>

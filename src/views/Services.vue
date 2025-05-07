@@ -1,14 +1,17 @@
 <template>
-    <Header></Header>
-    <ServiceCardList :items="cardData" />
-  </template>
-  <script setup>
-  import Header from '../components/Header.vue'
-  import ServiceCardList from '../components/ServiceCardList.vue'
+  <Header></Header>
+  <ServiceCardList :items="cardData" />
+  <Footer></Footer>
+</template>
 
-  import { ref } from 'vue';
+<script setup>
+import Header from '../components/Header.vue'
+import Footer from '../components/Footer.vue'
+import ServiceCardList from '../components/ServiceCardList.vue'
+import { ref, onMounted } from 'vue'
+import Gateway from '../../Gateway'
 
-  const cardData = ref([
+const cardData = ref([
   { id: 1, image: '/images/drustveni_dom_1.jpeg', title: 'Idejna rješenja' },
   { id: 2, image: '/images/drustveni_dom_2.jpeg', title: 'Idejni projekti' },
   { id: 3, image: '/images/drustveni_dom_3.jpeg', title: 'Glavni projekti' },
@@ -27,6 +30,16 @@
   { id: 16, image: '/images/drustveni_dom_8.jpeg', title: 'Elaborati etažiranja' },
   { id: 17, image: '/images/drustveni_dom_9.jpeg', title: 'Ispitivanje zrakopropusnosti' },
   { id: 18, image: '/images/drustveni_dom_1.jpeg', title: 'Energetski certifikati' },
-  // Add more items as needed
-]);
-  </script>
+])
+
+onMounted(async () => {
+  try {
+    const response = await Gateway.getAllServicesShortInfo()
+    if (Array.isArray(response)) {
+      cardData.value = response
+    }
+  } catch (error) {
+    console.error('Failed to fetch services:', error)
+  }
+})
+</script>
