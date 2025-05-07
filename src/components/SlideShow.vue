@@ -17,9 +17,12 @@
     </div>
   </template>
   
-  <script setup>
+  <!-- <script setup>
   import { ref, computed, onMounted } from 'vue';
+import Gateway from '../../Gateway';
   
+
+
   const images = [
     {
         id:1,
@@ -41,10 +44,6 @@
         image:'/images/drustveni_dom_1.jpeg'
 
     },
-    // '/images/oc_varazdin_1.png',
-    // '/images/oc_cakovec_1.png',
-    // '/images/drustveni_dom_1.jpeg',
-    // Add your image URLs here
   ];
   
   const currentIndex = ref(0);
@@ -53,19 +52,17 @@
   let intervalId = null;
 
 const startSlideshow = () => {
-  // Clear any existing interval
   if (intervalId) {
     clearInterval(intervalId);
   }
 
-  // Start a new interval
   intervalId = setInterval(() => {
     currentIndex.value = (currentIndex.value + 1) % images.length;
-  }, 3000); // Change every 2 seconds
+  }, 3000); 
 };
 
 const restartSlideshow = () => {
-  startSlideshow(); // Restart the slideshow
+  startSlideshow(); 
 };
   
   const goToImage = (index) => {
@@ -76,7 +73,76 @@ const restartSlideshow = () => {
   onMounted(() => {
     startSlideshow();
   });
-  </script>
+  </script> -->
+
+
+
+
+<script setup>
+import { ref, computed, onMounted } from 'vue';
+import Gateway from '../../Gateway';
+
+const images = ref([
+    {
+        id:1,
+        image:'/images/copot_kuca_1.png',
+
+    },
+    {
+        id:2,
+        image:'/images/oc_varazdin_1.png',
+
+    },
+    {
+        id:3,
+        image:'/images/oc_cakovec_1.png',
+
+    },
+    {
+        id:4,
+        image:'/images/drustveni_dom_1.jpeg'
+
+    },
+  ]);
+const currentIndex = ref(0);
+const currentImage = computed(() => images.value[currentIndex.value]);
+
+let intervalId = null;
+
+const startSlideshow = () => {
+  if (intervalId) {
+    clearInterval(intervalId);
+  }
+
+  intervalId = setInterval(() => {
+    if (images.value.length > 0) {
+      currentIndex.value = (currentIndex.value + 1) % images.value.length;
+    }
+  }, 3000);
+};
+
+const restartSlideshow = () => {
+  startSlideshow();
+};
+
+const goToImage = (index) => {
+  currentIndex.value = index;
+  restartSlideshow();
+};
+
+onMounted(async () => {
+  try {
+    const response = await Gateway.getFirstPicturesList();
+    images.value = response.map((item, index) => ({
+      id: index,
+      image: item.image, 
+    }));
+  } catch (error) {
+    console.error('Error fetching images:', error);
+  }
+  startSlideshow();
+});
+</script>
   
   <style scoped lang="scss">
   .show-class{
