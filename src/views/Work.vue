@@ -5,6 +5,17 @@ import Footer from '../components/Footer.vue'
 import ProjectList from '../components/ProjectList.vue'
 import { ref, onMounted } from 'vue'
 import Gateway from '../../Gateway'
+import { useHead } from '@unhead/vue'
+
+useHead({
+  title: 'Work - Our Projects',
+  meta: [
+    {
+      name: 'description',
+      content: 'Look at a more detailed version of each of our projects'
+    }
+  ]
+})
 
 const projectList = ref([
   {

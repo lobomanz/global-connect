@@ -23,7 +23,17 @@ import Header from '../components/Header.vue'
 import PersonList from '../components/PersonList.vue'
 import BigPicture from '../components/BigPicture.vue'
 import Footer from '../components/Footer.vue'
+import { useHead } from '@unhead/vue'
 
+useHead({
+  title: 'About Us - Our people',
+  meta: [
+    {
+      name: 'description',
+      content: 'Learn more about our company and people.'
+    }
+  ]
+})
 
 
 </script>

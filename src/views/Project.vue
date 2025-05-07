@@ -17,7 +17,17 @@ import Gallery from '../components/Gallery.vue';
 import { ref, onMounted } from 'vue';
 import Gateway from '../../Gateway';
 import Footer from '../components/Footer.vue'
+import { useHead } from '@unhead/vue'
 
+useHead({
+  title: 'Project - A Specific Project',
+  meta: [
+    {
+      name: 'description',
+      content: 'Look at a more detailed version of a certain project'
+    }
+  ]
+})
 
 const route = useRoute();
 const workId = parseInt(route.params.id);

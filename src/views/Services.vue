@@ -10,7 +10,17 @@ import Footer from '../components/Footer.vue'
 import ServiceCardList from '../components/ServiceCardList.vue'
 import { ref, onMounted } from 'vue'
 import Gateway from '../../Gateway'
+import { useHead } from '@unhead/vue'
 
+useHead({
+  title: 'Services - Our services',
+  meta: [
+    {
+      name: 'description',
+      content: 'Learn more about the services we offer.'
+    }
+  ]
+})
 const cardData = ref([
   { id: 1, image: '/images/drustveni_dom_1.jpeg', title: 'Idejna rješenja' },
   { id: 2, image: '/images/drustveni_dom_2.jpeg', title: 'Idejni projekti' },

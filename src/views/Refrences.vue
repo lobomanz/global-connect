@@ -11,7 +11,17 @@ import ReferenceList from '../components/ReferenceList.vue'
 import { ref, onMounted } from 'vue'
 import Gateway from '../../Gateway'
 import Footer from '../components/Footer.vue'
+import { useHead } from '@unhead/vue'
 
+useHead({
+  title: 'Refrences - All Our Projects',
+  meta: [
+    {
+      name: 'description',
+      content: 'List of everything you need to know about our projects'
+    }
+  ]
+})
 
 // Start with hardcoded fallback data
 const referenceData = ref([

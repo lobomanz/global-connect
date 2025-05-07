@@ -1,3 +1,4 @@
+// router/index.ts or index.js
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
 import Work from '@/views/Work.vue'
@@ -8,53 +9,85 @@ import Services from '@/views/Services.vue'
 import Service from '@/views/Service.vue'
 import People from '@/views/People.vue'
 
-const router = createRouter({
+export const routes = [
+  {
+    path: '/',
+    name: 'home',
+    component: HomeView,
+    meta: {
+      title: 'Home - Global Connect',
+      description: 'See all of our projects'
+    }
+  },
+  {
+    path: '/refrences',
+    name: 'refrences',
+    component: Refrences,
+    meta: {
+      title: 'Refrences - all our projects at one point',
+      description: 'List of everything you need to know about our projects'
+    }
+  },
+  {
+    path: '/work',
+    name: 'work',
+    component: Work,
+    meta: {
+      title: 'Work - our projects in their glorious form',
+      description: 'Look at a more detailed version of each of our projects'
+    }
+  },
+  {
+    path: '/project/:id', 
+    name: 'project',
+    component: Project,
+    meta: {
+      title: 'Project - a detailed view of a specific project',
+      description: 'Look at a more detailed version of a certain project'
+    }
+  },
+  {
+    path: '/people', 
+    name: 'people',
+    component: People,
+    meta: {
+      title: 'About Us - learn more about our people',
+      description: 'Learn more about our company and people.'
+    }
+  },
+  {
+    path: '/contact', 
+    name: 'contact',
+    component: Contact,
+    meta: {
+      title: 'Contact - here is how to get in touch with us',
+      description: 'Learn more about our company e-mails and contact.'
+    }
+  },
+  {
+    path: '/services', 
+    name: 'services',
+    component: Services,
+    meta: {
+      title: 'Services - all our services at one place',
+      description: 'Learn more about the services we offer.'
+    }
+  },
+  {
+    path: '/service/:id', 
+    name: 'service',
+    component: Service,
+    meta: {
+      title: 'Service - a specific service',
+      description: 'Learn more about a specific service.'
+    }
+  }
+]
+
+export const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  // mode:'hash',
-  routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: HomeView
-    },
-    {
-      path: '/refrences',
-      name: 'refrences',
-      component: Refrences
-    },
-    {
-      path: '/work',
-      name: 'work',
-      component: Work
-    },
-    {
-      path: '/project/:id', 
-      name: 'project',
-      component: Project,
-    },
-    {
-      path: '/people', 
-      name: 'people',
-      component: People,
-    },
-    {
-      path: '/contact', 
-      name: 'contact',
-      component: Contact,
-    },
-    {
-      path: '/services', 
-      name: 'services',
-      component: Services,
-    },
-    {
-      path: '/service/:id', 
-      name: 'service',
-      component: Service,
-    },
-  ],
-  scrollBehavior(to, from, savedPosition) {
-    // Always scroll to top when navigating to a new page
+  routes,
+  scrollBehavior() {
     return { top: 0 }
   }
 })

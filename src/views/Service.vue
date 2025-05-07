@@ -17,7 +17,17 @@ import BlogText from '../components/BlogText.vue';
 import Gallery from '../components/Gallery.vue';
 import Gateway from '../../Gateway';
 import Footer from '../components/Footer.vue'
+import { useHead } from '@unhead/vue'
 
+useHead({
+  title: 'Service - A Specific Service',
+  meta: [
+    {
+      name: 'description',
+      content: 'Learn more about a specific service.'
+    }
+  ]
+})
 // Mock Gateway fetch helper
 // const Gateway = {
 //   async getServicePictures(id) {
