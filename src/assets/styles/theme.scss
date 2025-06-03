@@ -10,8 +10,8 @@
   }
   @media (prefers-color-scheme: dark) {
     body {
-      background-color: #fff; /* Light background */
-      color: #000; /* Light text color */
+      background-color: #fff !important; /* Light background */
+      color: #000 !important; /* Light text color */
     }
   }
   @media (prefers-color-scheme: dark) {
