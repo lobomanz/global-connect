@@ -122,9 +122,6 @@ onMounted(async () => {
 });
 </script>
 <template>
-  <Header>
-
-  </Header>
   <ProjectList :projectList=projectList>
 
   </ProjectList>

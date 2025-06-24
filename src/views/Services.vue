@@ -1,5 +1,4 @@
 <template>
-  <Header></Header>
   <ServiceCardList :items="cardData" />
   <Footer></Footer>
 </template>

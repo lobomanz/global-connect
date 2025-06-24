@@ -1,7 +1,4 @@
 <template>
-  <Header>
-
-  </Header>
   <BigPicture class="big-picture" imageUrl='/images/office_deal.jpg' title="People"></BigPicture>
   <PersonList></PersonList>
   <Footer></Footer>

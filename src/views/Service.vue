@@ -1,7 +1,4 @@
 <template>
-  <Header>
-
-  </Header>
   <Gallery :images="foundList" mode="2" />
   <BlogText :content="content"></BlogText>
   <Footer></Footer>

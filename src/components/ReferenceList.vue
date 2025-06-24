@@ -123,7 +123,7 @@ const filteredItems = computed(() => {
 
 .reference-item {
   display: flex;
-  align-items: center;
+  // align-items: center;
   margin: 10px;
 
   .year {

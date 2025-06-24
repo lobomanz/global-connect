@@ -1,5 +1,4 @@
 <template>
-  <RouterView />
   <div :class="{ 'space-top': mode != 1 && mode != 2 }"></div>
   <header class="fixed-header" :class="{ transparent: mode == 1 || mode == 2 }">
     <div class="inside-header">

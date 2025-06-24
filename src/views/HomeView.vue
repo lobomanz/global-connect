@@ -15,8 +15,5 @@ useHead({
 </script>
 
 <template>
-  <Header mode="1">
-
-  </Header>
   <SlideShow></SlideShow>
 </template>

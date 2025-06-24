@@ -1,5 +1,4 @@
 <template>
-  <Header />
   <ReferenceList :items="referenceData" />
   <Footer></Footer>
 
