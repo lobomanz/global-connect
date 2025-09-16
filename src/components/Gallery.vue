@@ -5,7 +5,7 @@
             <button class="chevron left-one" @click="prevImage"></button>
         </div>
       
-      <div class="image-container" :style="{ backgroundImage: `url(${images[currentIndex]})` }"></div>
+      <div class="image-container" :style="{ backgroundImage: `url(${Gateway.baseUrl}${images[currentIndex]})` }"></div>
   
       <div class="right">
 
@@ -20,6 +20,7 @@
   
   <script setup>
   import { ref, defineProps } from 'vue';
+  import Gateway from '../../Gateway';
   
   const props = defineProps({
     images: {

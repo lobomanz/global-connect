@@ -6,7 +6,7 @@
       @mouseover="hover = true"
       @mouseleave="hover = false"
     >
-      <img :src="info.image" alt="" class="responsive-image" loading="lazy"/>
+      <img :src="Gateway.baseUrl+info.image" alt="" class="responsive-image" loading="lazy"/>
       <div class="overlay" :class="{ visible: hover }"></div>
       <div class="text" :class="{ visible: hover }">
         <h2>{{ info.projectName }}</h2>
@@ -20,7 +20,7 @@
   
   <script setup>
   import { ref, defineProps } from 'vue';
-  
+import Gateway from '../../Gateway';
   const props = defineProps({
     info: {
       type: Object,

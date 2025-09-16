@@ -6,42 +6,43 @@ async function fetchData(endpoint) {
     return response.json();
 }
 
-let baseUrl = "https://cms.globalconnect.hr/api";
 const Gateway = {
+    baseUrl : "https://cms.globalconnect.hr",
+    baseApiUrl : "https://cms.globalconnect.hr/api",
     async getProjectPictures(id) {
-        return fetchData(`${baseUrl}/project/${id}/pictures`);
+        return fetchData(`${Gateway.baseApiUrl}/project/${id}/pictures`);
     },
 
     async getProjectRichText(id) {
-        return fetchData(`${baseUrl}/project/${id}/richtext`);
+        return fetchData(`${Gateway.baseApiUrl}/project/${id}/richtext`);
     },
 
     async getFirstPicturesList() {
-        return fetchData(`${baseUrl}/project/first-images`);
+        return fetchData(`${Gateway.baseApiUrl}/project/first-images`);
     },
 
     async getAllProjectsShortInfo() {
-        return fetchData(`${baseUrl}/project/shortInfo`);
+        return fetchData(`${Gateway.baseApiUrl}/project/shortInfo`);
     },
 
     async getAllServicesShortInfo() {
-        return fetchData(`${baseUrl}/service/shortInfo`);
+        return fetchData(`${Gateway.baseApiUrl}/service/shortInfo`);
     },
 
     async getServicePictures(id) {
-        return fetchData(`${baseUrl}/service/${id}/pictures`);
+        return fetchData(`${Gateway.baseApiUrl}/service/${id}/pictures`);
     },
 
     async getServiceRichText(id) {
-        return fetchData(`${baseUrl}/service/${id}/richtext`);
+        return fetchData(`${Gateway.baseApiUrl}/service/${id}/richtext`);
     },
 
     async getEmployes() {
-        return fetchData(`${baseUrl}/employee`);
+        return fetchData(`${Gateway.baseApiUrl}/employee`);
     },
 
     async getReferences() {
-        return fetchData(`${baseUrl}/references`);
+        return fetchData(`${Gateway.baseApiUrl}/references`);
     }
 };
 

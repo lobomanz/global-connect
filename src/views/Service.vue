@@ -309,8 +309,8 @@ onMounted(async () => {
       foundList.value = images;
     }
 
-    if (text && text.text) {
-      content.value = text.text;
+    if (text ) {
+      content.value = text.richText;
     }
   } catch (error) {
     console.warn('Failed to fetch service data, using hardcoded content.', error);

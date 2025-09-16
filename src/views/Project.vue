@@ -301,9 +301,10 @@ onMounted(async () => {
       foundList.value = images;
     }
 
-    const textResponse = await Gateway.getProjectRichText(workId);
-    if (textResponse && textResponse.text) {
-      content.value = textResponse.text;
+    let textResponse = await Gateway.getProjectRichText(workId);
+    textResponse = textResponse.richText;
+    if (textResponse) {
+      content.value = textResponse;
     }
   } catch (err) {
     console.warn('Using fallback content and images due to fetch error:', err);

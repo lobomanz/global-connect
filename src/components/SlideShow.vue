@@ -2,7 +2,7 @@
     <div class="slideshow">
         <div v-for="image,index in images">
             <router-link :to="{ name: 'project', params: { id: image.id } }">
-                <img :src="image.image" :key="index" class="background-image"  :class="{ 'show-class': index == currentIndex, 'hide-class': index != currentIndex }"/>
+                <img :src="Gateway.baseUrl+image.image" :key="index" class="background-image"  :class="{ 'show-class': index == currentIndex, 'hide-class': index != currentIndex }"/>
             </router-link>
         </div>
       <div class="dots">

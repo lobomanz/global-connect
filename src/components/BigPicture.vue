@@ -10,7 +10,7 @@
   
   <script setup>
   import { defineProps } from 'vue';
-  
+  import Gateway from '../../Gateway';
   const props = defineProps({
     imageUrl: {
       type: String,

@@ -1,6 +1,6 @@
 <template>
   <div class="profile-card">
-    <img :src="profile.image" alt="Profile Picture" class="profile-image" loading="lazy"/>
+    <img :src="Gateway.baseUrl+profile.image" alt="Profile Picture" class="profile-image" loading="lazy"/>
     <p class="profile-name">{{ profile.name }}</p>
     <p class="profile-title" v-html="profile.title"></p>
   </div>
@@ -8,7 +8,7 @@
 
 <script setup>
 import { defineProps } from 'vue';
-
+import Gateway from '../../Gateway';
 const props = defineProps({
   profile: {
     type: Object,
