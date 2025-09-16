@@ -1,4 +1,7 @@
 <template>
+  <div v-if="route.path !== '/'">
+
+  
   <div :class="{ 'space-top': mode != 1 && mode != 2 }"></div>
   <header class="fixed-header" :class="{ transparent: mode == 1 || mode == 2 }">
     <div class="inside-header">
@@ -62,11 +65,14 @@
       </div>
     </div>
   </header>
+  </div>
 </template>
 
 <script setup>
 import { RouterLink , RouterView } from "vue-router";
 import { ref, defineProps } from "vue";
+import { useRoute } from "vue-router";
+const route = useRoute();
 const props = defineProps({
   mode: {
     type: Number,
