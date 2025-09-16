@@ -6,7 +6,7 @@ async function fetchData(endpoint) {
     return response.json();
 }
 
-let baseUrl = "http://cms.globalconnect.hr/api/";
+let baseUrl = "https://cms.globalconnect.hr/api/";
 const Gateway = {
     async getProjectPictures(id) {
         return fetchData(`${baseUrl}/project/${id}/pictures`);
