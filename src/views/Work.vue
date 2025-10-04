@@ -109,11 +109,12 @@ onMounted(async () => {
   try {
     const response = await Gateway.getAllProjectsShortInfo();
     // Make sure to map and format the response to match your local structure
+    console.log(response);
     projectList.value = response.map((item) => ({
       id: item.id,
-      projectDate: item.projectDate,
-      projectInfo: item.projectInfo,
-      projectName: item.projectName,
+      projectDate: item.date,
+      projectInfo: item.title,
+      projectName: item.location,
       image: item.image, // Adjust if your field names are different
     }));
   } catch (error) {

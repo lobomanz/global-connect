@@ -10,7 +10,7 @@
       <div class="overlay" :class="{ visible: hover }"></div>
       <div class="text" :class="{ visible: hover }">
         <h2>{{ info.projectName }}</h2>
-        <p>{{ info.projectDate }}</p>
+        <p>{{ monthAndYear }}</p>
         <p>{{ info.projectInfo }}</p>
       </div>
     </div>
@@ -19,7 +19,7 @@
   </template>
   
   <script setup>
-  import { ref, defineProps } from 'vue';
+  import { ref, defineProps,computed  } from 'vue';
 import Gateway from '../../Gateway';
   const props = defineProps({
     info: {
@@ -37,10 +37,38 @@ import Gateway from '../../Gateway';
   });
   
   const hover = ref(false);
+  const monthNames = [
+    'Siječanj',
+    'Veljača',
+    'Ožujak',
+    'Travanj',
+    'Svibanj',
+    'Lipanj',
+    'Srpanj',
+    'Kolovoz',
+    'Rujan',
+    'Listopad',
+    'Studeni',
+    'Prosinac'
+  ];
+  const monthAndYear = computed(() => {
+  // match DD.MM.YYYY format
+  const parts = props.info.projectDate.match(/^(\d{2})\.(\d{2})\.(\d{4})$/)
+  if (!parts) return ''
+  const monthNumber = parseInt(parts[2], 10)
+  const year = parts[3]
+  const monthName = monthNames[monthNumber - 1]
+  return monthName ? `${monthName}, ${year}` : ''
+})
+
+
+
   </script>
   
   <style scoped lang="scss">
   .card-container{
+    width: 100%;
+    height: 100%;
     padding: 10px;
     @include mobile{
       margin-inline: 10px;
