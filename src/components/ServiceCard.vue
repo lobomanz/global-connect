@@ -23,17 +23,19 @@
   .image-card {
     margin: 15px;
     overflow: hidden;
-    text-align: center;
     @include desktop{
       width: 100%;
     }
   
     .image {
-      width: 100%;
-      height: 200px;
+      width: 20vw;
+      height: 20vw;
       object-fit: cover;
       transition: transform 0.3s ease;
-  
+      @include mobile{
+        width: 80vw;
+        height: 80vw;
+      }
       &:hover {
         transform: scale(1.05);
       }
