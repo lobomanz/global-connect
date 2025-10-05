@@ -42,7 +42,7 @@ const Gateway = {
     },
 
     async getReferences() {
-        return fetchData(`${Gateway.baseApiUrl}/references`);
+        return fetchData(`${Gateway.baseApiUrl}/reference`);
     }
 };
 
