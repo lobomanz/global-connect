@@ -1,7 +1,7 @@
 <template>
         <div class="project-wrapper" >
         <div class="project-card" v-for="project in projectList">
-          <router-link :to="{ name: 'project', params: { id: project.id } }">
+          <router-link :to="{ name: 'project', params: { id: project.id },query: { title: project.projectInfo } }">
         <ProjectCard 
         :info="project"></ProjectCard>
       </router-link>

@@ -1,4 +1,5 @@
 <template>
+  <h1>{{ titleFromQuery }}</h1>
   <Gallery :images="foundList" mode="1" />
   <BlogText :content="content"></BlogText>
   <Footer></Footer>
@@ -11,7 +12,7 @@ import { useRoute } from 'vue-router';
 import Header from '../components/Header.vue';
 import BlogText from '../components/BlogText.vue';
 import Gallery from '../components/Gallery.vue';
-import { ref, onMounted } from 'vue';
+import { ref, onMounted,computed } from 'vue';
 import Gateway from '../../Gateway';
 import Footer from '../components/Footer.vue'
 import { useHead } from '@unhead/vue'
@@ -27,6 +28,7 @@ useHead({
 })
 
 const route = useRoute();
+const titleFromQuery = computed(() => route.query.title || 'Untitled Project')
 const workId = parseInt(route.params.id);
 
 const imagesList = ref([
@@ -313,6 +315,17 @@ onMounted(async () => {
 </script>
 
 <style lang="scss">
+h1{
+  margin-left: 50px;
+  font-size: 36px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  text-align: left;
+  @include mobile{
+    margin-left: 10px;
+    font-size: 28px;
+  }
+}
 .wrapper {
   h2 {
     font-size: 32px;

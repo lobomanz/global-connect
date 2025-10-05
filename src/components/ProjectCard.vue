@@ -101,7 +101,7 @@ import Gateway from '../../Gateway';
     background-color: rgba(0, 0, 0, 1);
     opacity: 0;
     transition: opacity 0.3s ease;
-    height: calc(100% - 5px);
+    height: 100%;
   }
   
   .overlay.visible {
