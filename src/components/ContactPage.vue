@@ -68,12 +68,33 @@ const formData = ref({
 
 const mapSrc = `https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=Ul.+Milana+Pavelica+1b,+10000,+Zagreb`;
 
-const sendEmail = () => {
-  if (typeof window !== 'undefined') {
-    const mailtoLink = `mailto:lovro.monkey@gmail.com?subject=Contact from ${formData.value.name}&body=Email: ${formData.value.email}%0APhone: ${formData.value.phone}%0AMessage: ${formData.value.message}`;
-    window.location.href = mailtoLink;
+const sendEmail = async () => {
+  if (!formData.value.name || !formData.value.email) {
+    alert("Molimo ispunite obavezna polja (Ime i email).");
+    return;
+  }
+
+  try {
+    const response = await fetch("https://globalconnect.hr/send-email.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData.value),
+    });
+
+    const result = await response.json();
+
+    if (result.status === "success") {
+      alert("Poruka uspješno poslana!");
+      formData.value = { name: "", email: "", phone: "", message: "" };
+    } else {
+      alert("Dogodila se pogreška pri slanju.");
+    }
+  } catch (err) {
+    console.error(err);
+    alert("Greška u komunikaciji s poslužiteljem.");
   }
 };
+
 </script>
 
 <style lang="scss" scoped>
