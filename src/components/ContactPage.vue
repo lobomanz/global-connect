@@ -8,8 +8,8 @@
           <h1>Kontakt</h1>
           <h2>Nazovite nas:</h2>
           <div class="phone-numbers">
-            <a :href="'tel:+385994554118'">Deni Pavić +385 994554118</a>
-            <a :href="'tel:+385981608322'">Vedran Vuletić +385 981608322</a>
+            <a :href="'tel:+385994554118'">Deni Pavić +385 99 4554 118</a>
+            <a :href="'tel:+385992136280'">Vedran Vuletić +385 99 2136 280</a>
           </div>
           <h2>Naš e-mail:</h2>
           <div class="emails">
