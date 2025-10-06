@@ -9,9 +9,8 @@
       <img :src="Gateway.baseUrl+info.image" alt="" class="responsive-image" loading="lazy"/>
       <div class="overlay" :class="{ visible: hover }"></div>
       <div class="text" :class="{ visible: hover }">
-        <h2>{{ info.projectName }}</h2>
+        <h2>{{ info.projectInfo }}</h2>
         <p>{{ monthAndYear }}</p>
-        <p>{{ info.projectInfo }}</p>
       </div>
     </div>
     <h3 class="title">{{ info.projectName }}</h3>
@@ -52,14 +51,20 @@ import Gateway from '../../Gateway';
     'Prosinac'
   ];
   const monthAndYear = computed(() => {
-  // match DD.MM.YYYY format
-  const parts = props.info.projectDate.match(/^(\d{2})\.(\d{2})\.(\d{4})$/)
+  if (!props.info.projectDate) return ''
+
+  // normalize any separator to a dot (so we can handle ".", "-", or "/")
+  const normalized = props.info.projectDate.replace(/[-/]/g, '.')
+  const parts = normalized.match(/^(\d{2})\.(\d{2})\.(\d{4})$/)
   if (!parts) return ''
-  const monthNumber = parseInt(parts[2], 10)
+
+  const month = parseInt(parts[2], 10)
   const year = parts[3]
-  const monthName = monthNames[monthNumber - 1]
+  const monthName = monthNames[month - 1]
+
   return monthName ? `${monthName}, ${year}` : ''
 })
+
 
 
 
