@@ -150,7 +150,7 @@ onBeforeUnmount(() => {
   .right {
     cursor: pointer;
     position: absolute;
-    top: 50%;
+    top: calc(50% + 12px);
     right: 20px;
   }
   .chevron.left-one::after{
