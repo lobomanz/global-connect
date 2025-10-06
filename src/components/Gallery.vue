@@ -1,24 +1,30 @@
 <template>
-    <div :class="{ 'gallery-container-service': mode == '2' , 'gallery-container': mode == '1' }">
-        <div class="left">
-
-            <button class="chevron left-one" @click="prevImage"></button>
-        </div>
-      
-      <div class="image-container" :style="{ backgroundImage: `url(${Gateway.baseUrl}${images?images[currentIndex]:''})` }"></div>
-  
-      <div class="right">
-
-          <button class="chevron right-one" @click="nextImage"></button>
-      </div>
-  
-      <div class="counter">
-        {{ currentIndex + 1 }} / {{ images?.length }}
-      </div>
+  <div :class="{ 'gallery-container-service': mode == '2', 'gallery-container': mode == '1' }">
+    <div class="left">
+      <button class="chevron left-one" @click="prevImage" aria-label="Previous image"></button>
     </div>
-  </template>
-  
-  <script setup>
+
+    <div class="image-container">
+      <img
+        v-if="images && images.length"
+        :src="Gateway.baseUrl + images[currentIndex]"
+        :alt="generateAlt(images[currentIndex])"
+        class="gallery-image"
+        loading="lazy"
+      />
+    </div>
+
+    <div class="right">
+      <button class="chevron right-one" @click="nextImage" aria-label="Next image"></button>
+    </div>
+
+    <div class="counter">
+      {{ currentIndex + 1 }} / {{ images?.length }}
+    </div>
+  </div>
+</template>
+
+<script setup>
 import { ref, defineProps, onMounted, onBeforeUnmount, watch } from 'vue'
 import Gateway from '../../Gateway'
 
@@ -36,11 +42,24 @@ const props = defineProps({
 
 const currentIndex = ref(0)
 
+// ✅ Generate alt text from file name
+function generateAlt(url) {
+  if (!url) return ''
+  // Extract filename (after last "/" and before extension)
+  const fileName = url.split('/').pop().split('.')[0]
+  // Replace hyphens/underscores with spaces and capitalize
+  const readable = fileName.replace(/[-_]+/g, ' ')
+  // Optional: capitalize first letter
+  return readable.charAt(0).toUpperCase() + readable.slice(1)
+}
+
 function nextImage() {
+  if (!props.images?.length) return
   currentIndex.value = (currentIndex.value + 1) % props.images.length
 }
 
 function prevImage() {
+  if (!props.images?.length) return
   currentIndex.value = (currentIndex.value - 1 + props.images.length) % props.images.length
 }
 
@@ -75,107 +94,108 @@ onBeforeUnmount(() => {
 })
 </script>
 
-  
-  <style scoped lang="scss">
-  .gallery-container {
-    position: relative;
-    margin-inline: 50px;
-    width: calc(100% - 100px);
-    height: calc(100vh - 100px);
-    overflow: hidden;
-    @include mobile{
-      width: 100%;
-      margin-inline: 0;
-      max-height: 350px;
-    }
-  }
-  .gallery-container-service {
-    position: relative;
-    margin-inline: 200px;
-    width: calc(100% - 400px);
-    height: calc(100vh - 300px);
-    overflow: hidden;
-    @include mobile{
-      width: 100%;
-      margin-inline: 0;
-      max-height: 350px;
-    }
-  }
-  
-  .image-container {
+<style scoped lang="scss">
+.gallery-container {
+  position: relative;
+  margin-inline: 50px;
+  width: calc(100% - 100px);
+  height: calc(100vh - 100px);
+  overflow: hidden;
+
+  @include mobile {
     width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    transition: background-image 0.5s ease;
+    margin-inline: 0;
+    max-height: 350px;
   }
-  
-  .chevron {
-    cursor: pointer;
-    border: none;
-    background-color: transparent;
+}
+
+.gallery-container-service {
+  position: relative;
+  margin-inline: 200px;
+  width: calc(100% - 400px);
+  height: calc(100vh - 300px);
+  overflow: hidden;
+
+  @include mobile {
+    width: 100%;
+    margin-inline: 0;
+    max-height: 350px;
+  }
+}
+
+.image-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gallery-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.5s ease;
+  user-select: none;
+}
+
+.chevron {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
   position: relative;
   height: 10px;
   width: 40px;
 }
 
-.chevron::before {
+.chevron::before,
+.chevron::after {
   position: absolute;
-  content: "";
+  content: '';
   border-radius: 10px;
   background-color: white;
   width: 20px;
   height: 5px;
-  /* transform: rotate(45deg); */
-  
 }
-.chevron::after {
+
+.left {
   position: absolute;
-  content: "";
-  border-radius: 10px;
-  background: white;
-  width: 20px;
-  height: 5px;
-  /* transform: rotate(-45deg) translateX(15px) translateY(15px); */
-  
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
 }
-  
-  .left {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    left: 0px;
+
+.right {
+  position: absolute;
+  top: calc(50% + 11px);
+  right: 20px;
+  transform: translateY(-50%);
+  @include desktop {
+    top: calc(50% + 5px);
   }
-  
-  .right {
-    cursor: pointer;
-    position: absolute;
-    top: calc(50% + 12px);
-    right: 20px;
-    @include desktop{
-      top: calc(50% + 5px);
-    }
-  }
-  .chevron.left-one::after{
-    transform: rotate(45deg) translateX(8px) translateY(8px);
-  }
-  .chevron.left-one::before{
-    transform: rotate(135deg);
-  }
-  .chevron.right-one::after{
-    transform: rotate(225deg) translateX(8px) translateY(8px);
-  }
-  .chevron.right-one::before{
-    transform: rotate(135deg);
-  }
-  .counter {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-  }
-  </style>
-  
+}
+
+.chevron.left-one::after {
+  transform: rotate(45deg) translateX(8px) translateY(8px);
+}
+.chevron.left-one::before {
+  transform: rotate(135deg);
+}
+.chevron.right-one::after {
+  transform: rotate(225deg) translateX(8px) translateY(8px);
+}
+.chevron.right-one::before {
+  transform: rotate(135deg);
+}
+
+.counter {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+</style>
