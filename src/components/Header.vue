@@ -49,7 +49,7 @@
   <header class="header-mobile">
     <div class="header-wrapper">
       <div class="header-top">
-        <RouterLink  to="/" class="logo">GC</RouterLink  >
+        <RouterLink  to="/preview" class="logo">GC</RouterLink  >
         <div class="hamburger" :class="{ open: isOpen }" @click="toggleHamburger">
           <span class="hamburger-top"></span>
           <span class="hamburger-middle"></span>
