@@ -152,6 +152,9 @@ onBeforeUnmount(() => {
     position: absolute;
     top: calc(50% + 12px);
     right: 20px;
+    @include desktop{
+      top: calc(50% + 5px);
+    }
   }
   .chevron.left-one::after{
     transform: rotate(45deg) translateX(8px) translateY(8px);
