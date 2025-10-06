@@ -1,5 +1,5 @@
 <template>
-  <BigPicture class="big-picture" imageUrl='/images/office_deal.jpg' title="People"></BigPicture>
+  <BigPicture class="big-picture" imageUrl='/images/office_deal.jpg' title="Projektni Tim"></BigPicture>
   <PersonList></PersonList>
   <Footer></Footer>
 
