@@ -15,7 +15,7 @@
             'show-class': index === currentIndex,
             'hide-class': index !== currentIndex,
           }"
-          alt=""
+          :alt="project.projectInfo"
         />
       </router-link>
     </div>

@@ -1,5 +1,5 @@
 <template>
-  <img src="/images/global_connect_zgrada.jpg" alt="">
+  <img src="/images/global_connect_zgrada.jpg" alt="global connect zgrada">
   <div class="wrapper">
 
     <div class="contact-page">

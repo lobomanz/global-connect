@@ -1,7 +1,7 @@
 <template>
     <div class="image-container">
       <div class="image-wrapper">
-        <img v-if="imageUrl" :src="imageUrl" alt="Uploaded Image" class="full-image" />
+        <img v-if="imageUrl" :src="imageUrl" :alt="title" class="full-image" />
         <div class="overlay"></div>
         <div v-if="imageUrl" class="title">{{ title }}</div>
       </div>
@@ -10,7 +10,6 @@
   
   <script setup>
   import { defineProps } from 'vue';
-  import Gateway from '../../Gateway';
   const props = defineProps({
     imageUrl: {
       type: String,
