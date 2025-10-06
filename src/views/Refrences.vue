@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import Header from '../components/Header.vue'
+defineOptions({ name: 'refrences' });
 import ReferenceList from '../components/ReferenceList.vue'
 import { ref, onMounted } from 'vue'
 import Gateway from '../../Gateway'

@@ -1,5 +1,5 @@
 <script setup>
-import Header from '../components/Header.vue'
+defineOptions({ name: 'preview' });
 import SlideShow from '../components/SlideShow.vue'
 import { useHead } from '@unhead/vue'
 

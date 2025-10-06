@@ -3,7 +3,7 @@
   <Footer></Footer>
 </template>
 <script setup>
-import Header from '../components/Header.vue'
+defineOptions({ name: 'contact' });
 import ContactPage from '../components/ContactPage.vue'
 import Footer from '../components/Footer.vue'
 import { useHead } from '@unhead/vue'

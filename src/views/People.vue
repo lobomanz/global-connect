@@ -16,7 +16,7 @@
 }
 </style>
 <script setup>
-import Header from '../components/Header.vue'
+defineOptions({ name: 'people' });
 import PersonList from '../components/PersonList.vue'
 import BigPicture from '../components/BigPicture.vue'
 import Footer from '../components/Footer.vue'

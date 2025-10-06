@@ -17,108 +17,33 @@
     </div>
   </template>
   
-  <!-- <script setup>
-  import { ref, computed, onMounted } from 'vue';
-import Gateway from '../../Gateway';
-  
-
-
-  const images = [
-    {
-        id:1,
-        image:'/images/copot_kuca_1.png',
-
-    },
-    {
-        id:2,
-        image:'/images/oc_varazdin_1.png',
-
-    },
-    {
-        id:3,
-        image:'/images/oc_cakovec_1.png',
-
-    },
-    {
-        id:4,
-        image:'/images/drustveni_dom_1.jpeg'
-
-    },
-  ];
-  
-  const currentIndex = ref(0);
-  const currentImage = computed(() => images[currentIndex.value]);
-
-  let intervalId = null;
-
-const startSlideshow = () => {
-  if (intervalId) {
-    clearInterval(intervalId);
-  }
-
-  intervalId = setInterval(() => {
-    currentIndex.value = (currentIndex.value + 1) % images.length;
-  }, 3000); 
-};
-
-const restartSlideshow = () => {
-  startSlideshow(); 
-};
-  
-  const goToImage = (index) => {
-    currentIndex.value = index;
-    restartSlideshow();
-  };
-  
-  onMounted(() => {
-    startSlideshow();
-  });
-  </script> -->
-
-
 
 
 <script setup>
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
 import Gateway from '../../Gateway';
 
-const images = ref([
-    {
-        id:1,
-        image:'/images/copot_kuca_1.png',
-
-    },
-    {
-        id:2,
-        image:'/images/oc_varazdin_1.png',
-
-    },
-    {
-        id:3,
-        image:'/images/oc_cakovec_1.png',
-
-    },
-    {
-        id:4,
-        image:'/images/drustveni_dom_1.jpeg'
-
-    },
-  ]);
+const images = ref([]);
 const currentIndex = ref(0);
 const currentImage = computed(() => images.value[currentIndex.value]);
 
 let intervalId = null;
 
+const preloadImages = (urls) => {
+  urls.forEach((url) => {
+    const img = new Image();
+    img.src = Gateway.baseUrl + url;
+  });
+};
+
 const startSlideshow = () => {
-  if (intervalId) {
-    clearInterval(intervalId);
-  }
+  if (intervalId) clearInterval(intervalId);
 
   intervalId = setInterval(() => {
     if (images.value.length > 0) {
       currentIndex.value = (currentIndex.value + 1) % images.value.length;
     }
-  }, 3000);
+  }, 4000);
 };
 
 const restartSlideshow = () => {
@@ -135,14 +60,23 @@ onMounted(async () => {
     const response = await Gateway.getFirstPicturesList();
     images.value = response.map((item, index) => ({
       id: index,
-      image: item.image, 
+      image: item.image,
     }));
+
+    // ✅ Start preloading right after fetching
+    preloadImages(images.value.map((img) => img.image));
+
+    startSlideshow();
   } catch (error) {
     console.error('Error fetching images:', error);
   }
-  startSlideshow();
+});
+
+onBeforeUnmount(() => {
+  clearInterval(intervalId);
 });
 </script>
+
   
   <style scoped lang="scss">
   .show-class{

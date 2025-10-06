@@ -1,6 +1,12 @@
 <template>
-  <Header :mode="headerMode"></Header>
-  <RouterView />
+  <Header :mode="headerMode" />
+
+  <RouterView v-slot="{ Component }">
+    <keep-alive :include="['preview', 'refrences', 'work', 'people', 'contact', 'services']">
+      <component :is="Component" />
+    </keep-alive>
+  </RouterView>
+
 </template>
 
 <script setup>

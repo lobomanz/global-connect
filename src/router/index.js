@@ -68,11 +68,11 @@ export const routes = [
     },
   },
   {
-    mode: 2,
     path: "/contact",
     name: "contact",
     component: Contact,
     meta: {
+      mode: 2,
       title: "Contact - here is how to get in touch with us",
       description: "Learn more about our company e-mails and contact.",
     },

@@ -69,7 +69,7 @@
 </template>
 
 <script setup>
-import { RouterLink , RouterView } from "vue-router";
+import { RouterLink } from "vue-router";
 import { ref, defineProps } from "vue";
 import { useRoute } from "vue-router";
 const route = useRoute();
