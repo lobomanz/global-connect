@@ -6,7 +6,7 @@
   <header class="fixed-header" :class="{ transparent: mode == 1 || mode == 2 }">
     <div class="inside-header">
       <RouterLink 
-        to="/"
+        to="/preview"
         class="logo"
         :class="{ 'color-white': mode == 1 || mode == 2 }"
         >global connect</RouterLink 
