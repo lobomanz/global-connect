@@ -18,7 +18,7 @@
   </template>
   
   <script setup>
-  import { ref, defineProps,computed  } from 'vue';
+  import { ref, defineProps,computed,onActivated  } from 'vue';
 import Gateway from '../../Gateway';
   const props = defineProps({
     info: {
@@ -36,6 +36,9 @@ import Gateway from '../../Gateway';
   });
   
   const hover = ref(false);
+  onActivated(() => {
+  hover.value = false
+})
   const monthNames = [
     'Siječanj',
     'Veljača',
