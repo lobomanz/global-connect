@@ -20,11 +20,9 @@ const projectList = ref([
 ]);
 
 onMounted(async () => {
-  console.log('again')
   try {
     const response = await Gateway.getAllProjectsShortInfo();
     // Make sure to map and format the response to match your local structure
-    console.log(response);
     projectList.value = response.map((item) => ({
       id: item.id,
       projectDate: item.date,
