@@ -19,8 +19,8 @@
   </template>
   
   <script setup>
-import { ref, defineProps, onMounted, onBeforeUnmount } from 'vue';
-import Gateway from '../../Gateway';
+import { ref, defineProps, onMounted, onBeforeUnmount, watch } from 'vue'
+import Gateway from '../../Gateway'
 
 const props = defineProps({
   images: {
@@ -32,34 +32,49 @@ const props = defineProps({
     required: false,
     validator: (value) => value !== undefined,
   },
-});
+})
 
-const currentIndex = ref(0);
+const currentIndex = ref(0)
 
 function nextImage() {
-  currentIndex.value = (currentIndex.value + 1) % props.images.length;
+  currentIndex.value = (currentIndex.value + 1) % props.images.length
 }
 
 function prevImage() {
-  currentIndex.value = (currentIndex.value - 1 + props.images.length) % props.images.length;
+  currentIndex.value = (currentIndex.value - 1 + props.images.length) % props.images.length
 }
 
 function handleKeydown(e) {
-  if (e.key === 'ArrowRight') {
-    nextImage();
-  } else if (e.key === 'ArrowLeft') {
-    prevImage();
-  }
+  if (e.key === 'ArrowRight') nextImage()
+  else if (e.key === 'ArrowLeft') prevImage()
 }
 
+function preloadImages(urls) {
+  if (!urls || !urls.length) return
+  urls.forEach((url) => {
+    const img = new Image()
+    img.src = Gateway.baseUrl + url
+  })
+}
+
+watch(
+  () => props.images,
+  (newImages) => {
+    preloadImages(newImages)
+    currentIndex.value = 0
+  },
+  { immediate: true }
+)
+
 onMounted(() => {
-  window.addEventListener('keydown', handleKeydown);
-});
+  window.addEventListener('keydown', handleKeydown)
+})
 
 onBeforeUnmount(() => {
-  window.removeEventListener('keydown', handleKeydown);
-});
+  window.removeEventListener('keydown', handleKeydown)
+})
 </script>
+
   
   <style scoped lang="scss">
   .gallery-container {
