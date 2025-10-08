@@ -57,11 +57,11 @@
         </div>
       </div>
       <div class="menu" :class="{ open: isOpen }">
-        <RouterLink  @click="toggleHamburger" to="/refrences" class="nav-item">refrences</RouterLink >
-        <RouterLink  @click="toggleHamburger" to="/services" class="nav-item">services</RouterLink >
-        <RouterLink  @click="toggleHamburger" to="/people" class="nav-item">people</RouterLink >
-        <RouterLink  @click="toggleHamburger" to="/work" class="nav-item">work</RouterLink >
-        <RouterLink  @click="toggleHamburger" to="/contact" class="nav-item">contact</RouterLink >
+        <RouterLink  @click="toggleHamburger" to="/work" class="nav-item">projekti</RouterLink >
+          <RouterLink  @click="toggleHamburger" to="/services" class="nav-item">usluge</RouterLink >
+            <RouterLink  @click="toggleHamburger" to="/people" class="nav-item">ured</RouterLink >
+        <RouterLink  @click="toggleHamburger" to="/refrences" class="nav-item">reference</RouterLink >
+        <RouterLink  @click="toggleHamburger" to="/contact" class="nav-item">kontakt</RouterLink >
       </div>
     </div>
   </header>
