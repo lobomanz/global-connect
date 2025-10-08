@@ -25,18 +25,25 @@ const props = defineProps({
 </script>
 
   
-  <style scoped>
+  <style scoped lang="scss">
   .profile-card {
     padding: 10px;
     max-width: 100%;
-    text-align: left; /* Center-align text */
+    text-align: left; 
+    @include mobile {
+      padding-inline: 30px;
+    }
   }
   
   .profile-image {
+    padding-top: 15px;
     max-width: 100%;
     max-height: 300px;
-    object-fit: contain; /* Maintain aspect ratio */
-    filter: grayscale(100%); /* Apply black and white effect */
+    object-fit: contain; 
+    filter: grayscale(100%); 
+    @include mobile {
+      max-height: max-content;
+    }
   }
   
   .profile-name {

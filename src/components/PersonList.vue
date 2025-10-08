@@ -118,7 +118,7 @@ onMounted(async () => {
 
 .person-card-wrapper {
   margin: 5px;
-
+  width: 100%;
   @include desktop {
     margin: 10px;
     width: 30%;

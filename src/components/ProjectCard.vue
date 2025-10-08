@@ -13,7 +13,7 @@
         <p>{{ monthAndYear }}</p>
       </div>
     </div>
-    <h3 class="title">{{ info.projectName }}</h3>
+    <h3 class="title">{{ info.projectInfo }}<br>{{ monthAndYear }}</h3>
   </div>
   </template>
   
