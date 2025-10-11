@@ -1,5 +1,5 @@
 <template>
-  <div class="slideshow">
+  <div class="slideshow" :class="{ 'active' : slideShowActive  }">
     <div v-for="(project, index) in projects" :key="project.id">
       <router-link
         :to="{
@@ -35,7 +35,7 @@
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount } from "vue"
 import Gateway from "../../Gateway"
-
+let slideShowActive = ref(false);
 const projects = ref([])
 const currentIndex = ref(0)
 const currentProject = computed(() => projects.value[currentIndex.value])
@@ -82,7 +82,11 @@ const goToImage = (index) => {
 }
 
 onMounted(async () => {
+  
   try {
+    setTimeout(() => {
+    slideShowActive.value = true;
+  }, 500);
     const response = await Gateway.getAllProjectsShortInfo()
 
     // Map data to match Work.vue structure
@@ -117,6 +121,7 @@ onBeforeUnmount(() => clearInterval(intervalId))
   opacity: 0;
 }
 .slideshow {
+  opacity: 0;
   position: fixed;
   top: 0;
   left: 0;
@@ -127,6 +132,10 @@ onBeforeUnmount(() => clearInterval(intervalId))
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.slideshow.active{
+  opacity: 1;
+  transition: opacity 1s ease-in;
 }
 .background-image {
   transition: 0.3s;
