@@ -41,20 +41,37 @@ const currentIndex = ref(0)
 const currentProject = computed(() => projects.value[currentIndex.value])
 let intervalId = null
 
-const preloadImages = (urls) => {
-  urls.forEach((url) => {
-    const img = new Image()
-    img.src = Gateway.baseUrl + url
-  })
+// 🔹 Sequential image preloading
+const preloadImagesSequentially = async (urls) => {
+  for (const url of urls) {
+    await new Promise((resolve) => {
+      const img = new Image()
+      img.src = Gateway.baseUrl + url
+      img.onload = resolve
+      img.onerror = resolve // continue even if one fails
+    })
+  }
 }
 
+// 🔹 Slideshow logic with first image lasting longer
 const startSlideshow = () => {
   if (intervalId) clearInterval(intervalId)
-  intervalId = setInterval(() => {
+
+  let first = true
+  const runSlide = () => {
     if (projects.value.length > 0) {
       currentIndex.value = (currentIndex.value + 1) % projects.value.length
     }
-  }, 4000)
+    // After the first cycle, switch back to normal 4s
+    if (first) {
+      first = false
+      clearInterval(intervalId)
+      intervalId = setInterval(runSlide, 4000)
+    }
+  }
+
+  // ⏱ First image shows 7 s (4 s + 3 s extra)
+  intervalId = setInterval(runSlide, 6000)
 }
 
 const restartSlideshow = () => startSlideshow()
@@ -68,16 +85,19 @@ onMounted(async () => {
   try {
     const response = await Gateway.getAllProjectsShortInfo()
 
-    // Keep identical mapping to Work.vue
+    // Map data to match Work.vue structure
     projects.value = response.map((item) => ({
       id: item.id,
       projectDate: item.date,
-      projectInfo: item.title,     // Used for query param
-      projectName: item.location,  // Optional for display
-      image: item.image,           // Image URL path
+      projectInfo: item.title,
+      projectName: item.location,
+      image: item.image,
     }))
 
-    preloadImages(projects.value.map((p) => p.image))
+    // ⏳ Preload sequentially
+    await preloadImagesSequentially(projects.value.map((p) => p.image))
+
+    // ▶️ Start slideshow after preload
     startSlideshow()
   } catch (error) {
     console.error("Error fetching projects:", error)
@@ -86,6 +106,7 @@ onMounted(async () => {
 
 onBeforeUnmount(() => clearInterval(intervalId))
 </script>
+
 
 <style scoped lang="scss">
 .show-class {

@@ -1,9 +1,14 @@
 <template>
-    <div class="intro-video-container" :class="{'removed':removeIntro}" v-if="visible">
-
-
+    <div class="intro-video-container" :class="{'removed': removeIntro}" v-if="visible">
         <div class="video-container">
-            <video class="bg-video" autoplay muted loop playsinline>
+            <video
+                class="bg-video"
+                autoplay
+                muted
+                loop
+                playsinline
+                ref="introVideo"
+            >
                 <source src="../../public/images/videos/hellyes.mp4" />
                 Your browser does not support the video tag.
             </video>
@@ -39,17 +44,33 @@
 import { ref, onMounted } from 'vue'
 
 const visible = ref(true)
+const isActive = ref(false)
+const removeIntro = ref(false)
+const introVideo = ref(null)
 
-let isActive = ref(false)
-let removeIntro = ref(false)
 onMounted(() => {
-    isActive.value = true
-    setTimeout(() => {
-        removeIntro.value = true
-        setTimeout(() => {
-            visible.value = false
-        }, 3000)
-    }, 2500)
+    const video = introVideo.value
+
+    if (video) {
+        // Wait until the video can play (is fully loaded enough)
+        const handleCanPlay = () => {
+            // Start the intro animation sequence
+            isActive.value = true
+
+            setTimeout(() => {
+                removeIntro.value = true
+                setTimeout(() => {
+                    visible.value = false
+                }, 3000)
+            }, 2500)
+
+            // Remove event listener after it fires once
+            video.removeEventListener('canplaythrough', handleCanPlay)
+        }
+
+        // Add listener for when video is ready
+        video.addEventListener('canplaythrough', handleCanPlay)
+    }
 })
 </script>
 
@@ -151,9 +172,11 @@ onMounted(() => {
     height: 100%;
     object-fit: cover;
 }
+
 .intro-video-container {
     opacity: 1;
 }
+
 .removed {
     opacity: 0;
     transition: opacity 0.7s;
