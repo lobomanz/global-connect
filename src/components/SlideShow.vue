@@ -86,7 +86,7 @@ onMounted(async () => {
   try {
     setTimeout(() => {
     slideShowActive.value = true;
-  }, 500);
+  }, 1000);
     const response = await Gateway.getAllProjectsShortInfo()
 
     // Map data to match Work.vue structure
