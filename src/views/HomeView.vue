@@ -1,6 +1,7 @@
 <script setup>
 defineOptions({ name: 'preview' });
 import SlideShow from '../components/SlideShow.vue'
+import IntroVideo from '../components/IntroVideo.vue'
 import { useHead } from '@unhead/vue'
 
 useHead({
@@ -16,4 +17,5 @@ useHead({
 
 <template>
   <SlideShow></SlideShow>
+  <IntroVideo/>
 </template>
