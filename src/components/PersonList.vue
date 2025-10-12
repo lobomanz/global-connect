@@ -122,7 +122,7 @@ onMounted(async () => {
   @include desktop {
     margin: 10px;
     width: 30%;
-    height: 400px;
+    // height: 400px;
 
   }
 }

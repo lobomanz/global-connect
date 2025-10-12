@@ -3,6 +3,9 @@
     <img v-if="profile.image" :src="Gateway.baseUrl+profile.image" :alt="profile.name" class="profile-image" loading="lazy"/>
     <p class="profile-name">{{ profile.name }}</p>
     <p class="profile-title" v-html="profile.title"></p>
+    <p class="profile-title" v-html="profile.department"></p>
+    <p class="profile-title" v-html="profile.description"></p>
+
   </div>
 </template>
 
@@ -53,7 +56,6 @@ const props = defineProps({
   }
   
   .profile-title {
-    text-transform: uppercase;
     font-weight: normal; /* Not bolded title */
     margin: 0px 0 0; /* Add margin for spacing */
   }
