@@ -1,30 +1,8 @@
 <template>
     <div class="intro-video-container" :class="{'removed': removeIntro}" v-if="visible">
-        <div class="video-container desktop-only">
-            <video
-                class="bg-video"
-                autoplay
-                muted
-                loop
-                playsinline
-                ref="introVideo"
-            >
-                <source src="../../public/images/videos/hellyes.mp4" />
-                Your browser does not support the video tag.
-            </video>
-        </div>
-        <div class="video-container mobile-only">
-            <video
-                class="bg-video"
-                autoplay
-                muted
-                loop
-                playsinline
-                ref="introVideo2"
-            >
-                <source src="../../public/images/videos/hellyesMuted.mp4" />
-                Your browser does not support the video tag.
-            </video>
+        <div class="image-container">
+
+            <img src="../../public/images/modernSimple.png" alt="modern simple background">
         </div>
         <div class="intro-text">
             <div class="display-flex">
@@ -59,9 +37,7 @@ import { ref, onMounted } from 'vue'
 const visible = ref(true)
 const isActive = ref(false)
 const removeIntro = ref(false)
-const introVideo = ref(null)
-const introVideo2 = ref(null)
-
+const introImage = ref(null)
 
 const startExitSequence = () => {
   isActive.value = true
@@ -75,28 +51,22 @@ const startExitSequence = () => {
 
 defineExpose({ startExitSequence })
 
-
 onMounted(() => {
-    let video = introVideo.value;
-    if(window.innerWidth <= 650){
-        video = introVideo2.value
-    }else{
-        video = introVideo.value
+  const img = introImage.value
+  if (img) {
+    // If already cached (e.g. fast refresh)
+    if (img.complete) {
+      isActive.value = true
+    } else {
+      // Wait until image fully loads
+      img.addEventListener('load', () => {
+        isActive.value = true
+      })
     }
-
-    if (video) {
-        const handleCanPlay = () => {
-            isActive.value = true
-
-            
-
-            video.removeEventListener('canplaythrough', handleCanPlay)
-        }
-
-        video.addEventListener('canplaythrough', handleCanPlay)
-    }
+  }
 })
 </script>
+
 
 <style scoped lang="scss">
 .intro-video-container {
@@ -107,24 +77,6 @@ onMounted(() => {
         transition: opacity 0.7s;
     }
 
-    .video-container {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        overflow: hidden;
-        z-index: 9999;
-
-        .bg-video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    }
 
     .intro-text {
         position: fixed;
@@ -217,6 +169,24 @@ onMounted(() => {
     display: block;
     @include desktop {
         display: none;
+    }
+}
+.image-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 9988;
+    img{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform: translate(-50%, -50%);
     }
 }
 </style>
