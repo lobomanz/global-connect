@@ -1,6 +1,6 @@
 <template>
     <div class="intro-video-container" :class="{'removed': removeIntro}" v-if="visible">
-        <div class="video-container">
+        <div class="video-container desktop-only">
             <video
                 class="bg-video"
                 autoplay
@@ -10,6 +10,19 @@
                 ref="introVideo"
             >
                 <source src="../../public/images/videos/hellyes.mp4" />
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="video-container mobile-only">
+            <video
+                class="bg-video"
+                autoplay
+                muted
+                loop
+                playsinline
+                ref="introVideo2"
+            >
+                <source src="../../public/images/videos/hellyesMuted.mp4" />
                 Your browser does not support the video tag.
             </video>
         </div>
@@ -47,6 +60,8 @@ const visible = ref(true)
 const isActive = ref(false)
 const removeIntro = ref(false)
 const introVideo = ref(null)
+const introVideo2 = ref(null)
+
 
 const startExitSequence = () => {
   isActive.value = true
@@ -62,7 +77,12 @@ defineExpose({ startExitSequence })
 
 
 onMounted(() => {
-    const video = introVideo.value
+    let video = introVideo.value;
+    if(window.innerWidth <= 650){
+        video = introVideo2.value
+    }else{
+        video = introVideo.value
+    }
 
     if (video) {
         const handleCanPlay = () => {
@@ -185,6 +205,18 @@ onMounted(() => {
                 }
             }
         }
+    }
+}
+.desktop-only {
+    display: none;
+    @include desktop {
+        display: block;
+    }
+}
+.mobile-only {
+    display: block;
+    @include desktop {
+        display: none;
     }
 }
 </style>

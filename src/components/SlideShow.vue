@@ -30,19 +30,21 @@
       ></span>
     </div>
   </div>
+  <IntroVideo ref="introVideoRef" />
+  
 </template>
 
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount } from "vue"
 import Gateway from "../../Gateway"
+import IntroVideo from "../components/IntroVideo.vue"
 let slideShowActive = ref(false);
 const projects = ref([])
 const currentIndex = ref(0)
 const currentProject = computed(() => projects.value[currentIndex.value])
 let intervalId = null
 
-const emit = defineEmits(["first-image-loaded"]) // 👈 add this
-
+let introVideoRef = ref(null)
 
 
 const preloadImagesSequentially = async (urls) => {
@@ -51,8 +53,10 @@ const preloadImagesSequentially = async (urls) => {
       const img = new Image()
       img.src = Gateway.baseUrl + urls[i]
       img.onload = () => {
-        // 👇 Emit once when the *first* image finishes loading
-        if (i === 0) emit("first-image-loaded")
+        if (i === 0) {
+          console.log("First image loaded");
+          introVideoRef.value.startExitSequence();
+        }
         resolve()
       }
       img.onerror = resolve
