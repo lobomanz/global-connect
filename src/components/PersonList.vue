@@ -1,18 +1,36 @@
 <template>
-  <div class="person-list">
-    <div class="person-card-wrapper" v-for="(profile, index) in profilesBosses" :key="index">
+  <div class="person-list bosses" >
+    <!-- Bosses (top row) -->
+    <div
+      
+      class="person-card-wrapper"
+      v-for="(profile, index) in profilesBosses"
+      :key="'boss-' + index"
+    >
       <PersonCard :profile="profile" />
     </div>
   </div>
+
+  <!-- Regular employees -->
   <div class="person-list">
-    <div class="person-card-wrapper" v-for="(profile, index) in profiles" :key="index">
-      <PersonCard :profile="profile" />
+    <div
+      v-for="(row, rowIndex) in profileRows"
+      :key="'row-' + rowIndex"
+      class="person-row"
+    >
+      <div
+        v-for="(profile, index) in row"
+        :key="'profile-' + rowIndex + '-' + index"
+        class="person-card-wrapper"
+      >
+        <PersonCard :profile="profile" />
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 import PersonCard from '../components/PersonCard.vue';
 import Gateway from '../../Gateway';
 
@@ -34,56 +52,16 @@ const fallbackBosses = [
 ];
 
 const fallbackProfiles = [
-  {
-    image: '/images/deni_pavic.jpg',
-    name: 'Vedran Roljić',
-    title: 'Projektant suradnik',
-  },
-  {
-    image: '/images/zvonimir_jurkovic.jpg',
-    name: 'Matija Pucak',
-    title: 'Ovlašteni arhitekt',
-  },
-  {
-    image: '/images/vedran_vuletic.jpg',
-    name: 'Mislav Klarić',
-    title: 'Arhitekt pripravnik',
-  },
-  {
-    image: '/images/vedran_vuletic.jpg',
-    name: 'Igor Višić',
-    title: 'Ovlašteni inženjer geodezije i geoinformatike',
-  },
-  {
-    image: '/images/igor_visic.jpg',
-    name: 'Tomislav Jagodić',
-    title: 'Geodet suradnik',
-  },
-  {
-    image: '/images/zvonimir_jurkovic.jpg',
-    name: 'Tomislav Češljaš',
-    title: 'Ovlašteni inženjer građevinarstva',
-  },
-  {
-    image: '/images/igor_visic.jpg',
-    name: 'Siniša Kahrić',
-    title: 'Ovlašteni inženjer građevinarstva',
-  },
-  {
-    image: '/images/vedran_vuletic.jpg',
-    name: 'Darko Magić',
-    title: 'Strojar suradnik',
-  },
-  {
-    image: '/images/zvonimir_jurkovic.jpg',
-    name: 'Srećko Lačen',
-    title: 'Ovlašteni inženjer stroj.',
-  },
-  {
-    image: '/images/vedran_vuletic.jpg',
-    name: 'Boris Kramarić',
-    title: 'Ovlašteni inženjer elektr.',
-  },
+  { image: '/images/deni_pavic.jpg', name: 'Vedran Roljić', title: 'Projektant suradnik' },
+  { image: '/images/zvonimir_jurkovic.jpg', name: 'Matija Pucak', title: 'Ovlašteni arhitekt' },
+  { image: '/images/vedran_vuletic.jpg', name: 'Mislav Klarić', title: 'Arhitekt pripravnik' },
+  { image: '/images/vedran_vuletic.jpg', name: 'Igor Višić', title: 'Ovlašteni inženjer geodezije i geoinformatike' },
+  { image: '/images/igor_visic.jpg', name: 'Tomislav Jagodić', title: 'Geodet suradnik' },
+  { image: '/images/zvonimir_jurkovic.jpg', name: 'Tomislav Češljaš', title: 'Ovlašteni inženjer građevinarstva' },
+  { image: '/images/igor_visic.jpg', name: 'Siniša Kahrić', title: 'Ovlašteni inženjer građevinarstva' },
+  { image: '/images/vedran_vuletic.jpg', name: 'Darko Magić', title: 'Strojar suradnik' },
+  { image: '/images/zvonimir_jurkovic.jpg', name: 'Srećko Lačen', title: 'Ovlašteni inženjer stroj.' },
+  { image: '/images/vedran_vuletic.jpg', name: 'Boris Kramarić', title: 'Ovlašteni inženjer elektr.' },
 ];
 
 onMounted(async () => {
@@ -103,27 +81,68 @@ onMounted(async () => {
     profiles.value = fallbackProfiles;
   }
 });
+
+// 🧩 Create alternating rows of 3 and 2
+const profileRows = computed(() => {
+  const rows = [];
+  const arr = profiles.value;
+  let i = 0;
+  let takeThree = true;
+  while (i < arr.length) {
+    const count = takeThree ? 3 : 2;
+    rows.push(arr.slice(i, i + count));
+    i += count;
+    takeThree = !takeThree;
+  }
+  return rows;
+});
 </script>
 
 <style scoped lang="scss">
 .person-list {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
   max-width: 1600px;
   margin-inline: auto;
-  justify-content: center;
+  @include mobile {
+    display: block;
+  }
 }
 
-
+.person-row {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  width: 100%;
+  @include mobile {
+    display: block;
+  }
+}
 
 .person-card-wrapper {
   margin: 5px;
-  width: 100%;
+  flex: 1 1 30%;
+  max-width: 30%;
   @include desktop {
     margin: 10px;
-    width: 30%;
-    // height: 400px;
+  }
+  @include mobile {
+    max-width: 100%;
+    flex: none;
+    margin: 10px 0;
+  }
+}
 
+/* Make sure 2-card rows are centered nicely */
+.person-row:nth-child(even) .person-card-wrapper {
+  // max-width: 45%;
+}
+.bosses{
+  flex-direction: row;
+  justify-content: center;
+  @include mobile {
+    display: block;
   }
 }
 </style>
