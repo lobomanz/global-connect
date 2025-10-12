@@ -41,14 +41,21 @@ const currentIndex = ref(0)
 const currentProject = computed(() => projects.value[currentIndex.value])
 let intervalId = null
 
-// 🔹 Sequential image preloading
+const emit = defineEmits(["first-image-loaded"]) // 👈 add this
+
+
+
 const preloadImagesSequentially = async (urls) => {
-  for (const url of urls) {
+  for (let i = 0; i < urls.length; i++) {
     await new Promise((resolve) => {
       const img = new Image()
-      img.src = Gateway.baseUrl + url
-      img.onload = resolve
-      img.onerror = resolve // continue even if one fails
+      img.src = Gateway.baseUrl + urls[i]
+      img.onload = () => {
+        // 👇 Emit once when the *first* image finishes loading
+        if (i === 0) emit("first-image-loaded")
+        resolve()
+      }
+      img.onerror = resolve
     })
   }
 }
