@@ -37,3 +37,13 @@ const onFirstImageLoaded = () => {
   introVideoRef.value?.startExitSequence()
 }
 </script>
+
+<style scoped lang="scss">
+.invisible {
+  opacity: 0;
+}
+.isVisible {
+  opacity: 1;
+  transition: opacity 0.5s ease-in;
+}
+</style>
