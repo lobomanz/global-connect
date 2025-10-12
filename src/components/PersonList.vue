@@ -18,13 +18,20 @@
       :key="'row-' + rowIndex"
       class="person-row"
     >
-      <div
-        v-for="(profile, index) in row"
-        :key="'profile-' + rowIndex + '-' + index"
-        class="person-card-wrapper"
-      >
-        <PersonCard :profile="profile" />
+    <div style="width: 100%;">
+      <h1 v-if="rowIndex==3" >PROJEKTANTI SURADNICI </h1>
+      <div class="person-row">
+
+          <div
+            v-for="(profile, index) in row"
+            :key="'profile-' + rowIndex + '-' + index"
+            class="person-card-wrapper"
+          >
+            <PersonCard :profile="profile" />
+          </div>
       </div>
+    </div>
+
     </div>
   </div>
 </template>
@@ -133,9 +140,12 @@ const profileRows = computed(() => {
   }
 }
 
-/* Make sure 2-card rows are centered nicely */
-.person-row:nth-child(even) .person-card-wrapper {
-  // max-width: 45%;
+h1{
+  @include mobile {
+    font-size: 24px;
+    margin-left: 30px;
+    margin-top: 35px;
+  }
 }
 .bosses{
   flex-direction: row;
