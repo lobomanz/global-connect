@@ -61,8 +61,8 @@ onMounted(() => {
                 removeIntro.value = true
                 setTimeout(() => {
                     visible.value = false
-                }, 3000)
-            }, 2500)
+                }, 3500)
+            }, 3000)
 
             // Remove event listener after it fires once
             video.removeEventListener('canplaythrough', handleCanPlay)
@@ -115,7 +115,7 @@ onMounted(() => {
         box-sizing: border-box;
         width: 30px;
         height: 30px;
-        transition: 1s ease;
+        transition: 1.5s ease;
     }
 
     .letter-o.active-up {
