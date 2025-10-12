@@ -141,6 +141,7 @@ const profileRows = computed(() => {
 }
 
 h1{
+  margin-left: 20px;
   @include mobile {
     font-size: 24px;
     margin-left: 30px;
