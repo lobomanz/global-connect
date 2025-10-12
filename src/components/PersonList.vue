@@ -14,7 +14,7 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import PersonCard from '../components/PersonCard.vue';
-import Gateway from '../../Gateway'; // Adjust the path to where `Gateway` is defined
+import Gateway from '../../Gateway';
 
 const profilesBosses = ref([]);
 const profiles = ref([]);
@@ -89,7 +89,7 @@ const fallbackProfiles = [
 onMounted(async () => {
   try {
     const data = await Gateway.getEmployes();
-
+    console.log('Fetched employees:', data);
     if (Array.isArray(data) && data.length > 0) {
       profilesBosses.value = data.slice(0, 2);
       profiles.value = data.slice(2);

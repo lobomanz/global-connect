@@ -1,10 +1,10 @@
 <template>
   <div class="profile-card">
     <img v-if="profile.image" :src="Gateway.baseUrl+profile.image" :alt="profile.name" class="profile-image" loading="lazy"/>
-    <p class="profile-name">{{ profile.name }}</p>
-    <p class="profile-title" v-html="profile.title"></p>
-    <p class="profile-title" v-html="profile.department"></p>
-    <p class="profile-title" v-html="profile.description"></p>
+    <p v-if="profile.name" class="profile-name">{{ profile.name }}</p>
+    <p v-if="profile.title" class="profile-title" v-html="profile.title"></p>
+    <p v-if="profile.department" class="profile-other" v-html="profile.department"></p>
+    <p v-if="profile.description" class="profile-other" v-html="profile.description"></p>
 
   </div>
 </template>
@@ -20,7 +20,9 @@ const props = defineProps({
       return (
         value.image && typeof value.image === 'string' &&
         value.name && typeof value.name === 'string' &&
-        value.title && typeof value.title === 'string' 
+        value.title && typeof value.title === 'string' &&
+        value.department && typeof value.department === 'string' &&
+        value.description && typeof value.description === 'string'
       );
     },
   },
@@ -51,13 +53,18 @@ const props = defineProps({
   
   .profile-name {
     font-weight: bold;
-    font-size: 18px; /* Bolded name */
-    margin: 0px 0 0; /* Add margin for spacing */
+    font-size: 18px; 
+    margin: 0px 0 0; 
   }
   
   .profile-title {
-    font-weight: normal; /* Not bolded title */
-    margin: 0px 0 0; /* Add margin for spacing */
+    font-weight: normal; 
+    margin: 0px 0 0; 
+  }
+  .profile-other{
+    font-weight: normal; 
+    margin: 0px 0 0; 
+    display: block;
   }
   </style>
   
