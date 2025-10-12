@@ -113,7 +113,6 @@ const profileRows = computed(() => {
 .person-row {
   display: flex;
   flex-wrap: nowrap;
-  justify-content: center;
   width: 100%;
   @include mobile {
     display: block;
