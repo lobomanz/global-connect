@@ -98,7 +98,10 @@ const profileRows = computed(() => {
   let i = 0;
   let takeThree = true;
   while (i < arr.length) {
-    const count = takeThree ? 3 : 2;
+    let count = takeThree ? 3 : 2;
+    if(i>3){
+      count = 3;
+    }
     rows.push(arr.slice(i, i + count));
     i += count;
     takeThree = !takeThree;
@@ -121,6 +124,7 @@ const profileRows = computed(() => {
 
 .person-row {
   display: flex;
+  justify-content: center;
   flex-wrap: nowrap;
   width: 100%;
   @include mobile {
