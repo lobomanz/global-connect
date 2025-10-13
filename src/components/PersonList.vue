@@ -19,7 +19,7 @@
       class="person-row"
     >
     <div style="width: 100%;">
-      <h1 v-if="rowIndex==3" >PROJEKTANTI SURADNICI </h1>
+      <h1 v-if="rowIndex==2" >PROJEKTANTI SURADNICI </h1>
       <div class="person-row">
 
           <div
@@ -78,6 +78,8 @@ onMounted(async () => {
     if (Array.isArray(data) && data.length > 0) {
       profilesBosses.value = data.slice(0, 2);
       profiles.value = data.slice(2);
+      profiles.value = profiles.value.sort((a, b) => a.order - b.order);
+      console.log('Using fallback employees:', profiles.value);
     } else {
       profilesBosses.value = fallbackBosses;
       profiles.value = fallbackProfiles;
