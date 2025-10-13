@@ -1,12 +1,12 @@
 <template>
-  <div v-if="route.path !== '/'">
+  <div>
 
   
   <div :class="{ 'space-top': mode != 1 && mode != 2 }"></div>
   <header class="fixed-header" :class="{ transparent: mode == 1 || mode == 2 }">
     <div class="inside-header">
       <RouterLink 
-        to="/preview"
+        to="/"
         class="logo"
         :class="{ 'color-white': mode == 1 || mode == 2 }"
         >global connect</RouterLink 
@@ -49,7 +49,7 @@
   <header class="header-mobile">
     <div class="header-wrapper">
       <div class="header-top">
-        <RouterLink  to="/preview" class="logo">GC</RouterLink  >
+        <RouterLink  to="/" class="logo">GC</RouterLink  >
         <div class="hamburger" :class="{ open: isOpen }" @click="toggleHamburger">
           <span class="hamburger-top"></span>
           <span class="hamburger-middle"></span>

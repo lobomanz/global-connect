@@ -11,18 +11,18 @@ import People from "@/views/People.vue";
 import SiteInProgress from "@/views/SiteInProgress.vue";
 
 export const routes = [
+  // {
+  //   path: "/",
+  //   name: "home",
+  //   component: SiteInProgress,
+  //   meta: {
+  //     mode: 1,
+  //     title: "Site in progress",
+  //     description: "Site is currently in progress",
+  //   },
+  // },
   {
     path: "/",
-    name: "home",
-    component: SiteInProgress,
-    meta: {
-      mode: 1,
-      title: "Site in progress",
-      description: "Site is currently in progress",
-    },
-  },
-  {
-    path: "/preview",
     name: "preview",
     component: HomeView,
     meta: {

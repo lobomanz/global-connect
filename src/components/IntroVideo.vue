@@ -2,7 +2,7 @@
     <div class="intro-video-container" :class="{'removed': removeIntro}" v-if="visible">
         <div class="image-container">
 
-            <img src="../../public/images/modernSimple.png" alt="modern simple background">
+            <img src="../../public/images/modernSimple.png" alt="modern simple background" ref="introImage" />
         </div>
         <div class="intro-text">
             <div class="display-flex">
@@ -40,7 +40,7 @@ const removeIntro = ref(false)
 const introImage = ref(null)
 
 const startExitSequence = () => {
-  isActive.value = true
+//   isActive.value = true
   setTimeout(() => {
     removeIntro.value = true
     setTimeout(() => {
