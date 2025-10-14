@@ -138,6 +138,8 @@ const profileRows = computed(() => {
   max-width: 30%;
   @include desktop {
     margin: 10px;
+    display: flex;
+    justify-content: center;
   }
   @include mobile {
     max-width: 100%;
@@ -147,8 +149,10 @@ const profileRows = computed(() => {
 }
 
 h1{
+  text-align: center;
   margin-left: 20px;
   @include mobile {
+    text-align: left;
     font-size: 24px;
     margin-left: 30px;
     margin-top: 35px;
