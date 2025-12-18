@@ -1,5 +1,5 @@
 <template>
-    <div class="intro-video-container" :class="{ 'removed': removeIntro }" v-if="visible">
+    <div class="intro-video-container" :class="{'removed': removeIntro}" v-if="visible">
         <div class="image-container">
 
             <img src="../../public/images/modernSimple.png" alt="modern simple background" ref="introImage" />
@@ -40,30 +40,30 @@ const removeIntro = ref(false)
 const introImage = ref(null)
 
 const startExitSequence = () => {
-    //   isActive.value = true
+//   isActive.value = true
+  setTimeout(() => {
+    removeIntro.value = true
     setTimeout(() => {
-        removeIntro.value = true
-        setTimeout(() => {
-            visible.value = false
-        }, 2000)
-    }, 1500)
+      visible.value = false
+    }, 2500)
+  }, 2000)
 }
 
 defineExpose({ startExitSequence })
 
 onMounted(() => {
-    const img = introImage.value
-    if (img) {
-        // If already cached (e.g. fast refresh)
-        if (img.complete) {
-            isActive.value = true
-        } else {
-            // Wait until image fully loads
-            img.addEventListener('load', () => {
-                isActive.value = true
-            })
-        }
+  const img = introImage.value
+  if (img) {
+    // If already cached (e.g. fast refresh)
+    if (img.complete) {
+      isActive.value = true
+    } else {
+      // Wait until image fully loads
+      img.addEventListener('load', () => {
+        isActive.value = true
+      })
     }
+  }
 })
 </script>
 
@@ -159,24 +159,19 @@ onMounted(() => {
         }
     }
 }
-
 .desktop-only {
     display: none;
-
     @include desktop {
         display: block;
     }
 }
-
 .mobile-only {
     display: block;
-
     @include desktop {
         display: none;
     }
 }
-
-.image-container {
+.image-container{
     position: fixed;
     top: 0;
     left: 0;
@@ -184,8 +179,7 @@ onMounted(() => {
     height: 100vh;
     overflow: hidden;
     z-index: 9988;
-
-    img {
+    img{
         position: absolute;
         top: 50%;
         left: 50%;
@@ -196,3 +190,4 @@ onMounted(() => {
     }
 }
 </style>
+
