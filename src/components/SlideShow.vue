@@ -1,37 +1,25 @@
 <template>
-  <div class="slideshow" :class="{ 'active' : slideShowActive  }">
+  <div class="slideshow" :class="{ 'active': slideShowActive }">
     <div v-for="(project, index) in projects" :key="project.id">
-      <router-link
-        :to="{
-          name: 'project',
-          params: { id: project.id },
-          query: { title: project.projectInfo },
-        }"
-      >
-        <img
-          :src="Gateway.baseUrl + project.image"
-          class="background-image"
-          :class="{
-            'show-class': index === currentIndex,
-            'hide-class': index !== currentIndex,
-          }"
-          :alt="project.projectInfo"
-        />
+      <router-link :to="{
+        name: 'project',
+        params: { id: project.id },
+        query: { title: project.projectInfo },
+      }">
+        <img :src="Gateway.baseUrl + project.image" class="background-image" :class="{
+          'show-class': index === currentIndex,
+          'hide-class': index !== currentIndex,
+        }" :alt="project.projectInfo" />
       </router-link>
     </div>
 
     <div class="dots">
-      <span
-        v-for="(project, index) in projects"
-        :key="index"
-        class="dot"
-        :class="{ active: index === currentIndex }"
-        @click="goToImage(index)"
-      ></span>
+      <span v-for="(project, index) in projects" :key="index" class="dot" :class="{ active: index === currentIndex }"
+        @click="goToImage(index)"></span>
     </div>
   </div>
   <IntroVideo ref="introVideoRef" />
-  
+
 </template>
 
 <script setup>
@@ -55,7 +43,7 @@ const preloadImagesSequentially = async (urls) => {
       img.onload = () => {
         if (i === 0) {
           console.log("First image loaded");
-          introVideoRef.value.startExitSequence();
+
         }
         resolve()
       }
@@ -77,7 +65,7 @@ const startSlideshow = () => {
     if (first) {
       first = false
       clearInterval(intervalId)
-      intervalId = setInterval(runSlide, 4000)
+      intervalId = setInterval(runSlide, 3000)
     }
   }
 
@@ -93,11 +81,11 @@ const goToImage = (index) => {
 }
 
 onMounted(async () => {
-  
+  introVideoRef.value.startExitSequence();
   try {
     setTimeout(() => {
-    slideShowActive.value = true;
-  }, 1500);
+      slideShowActive.value = true;
+    }, 1500);
     const response = await Gateway.getAllProjectsShortInfo()
 
     // Map data to match Work.vue structure
@@ -128,9 +116,11 @@ onBeforeUnmount(() => clearInterval(intervalId))
   z-index: 1000;
   opacity: 1;
 }
+
 .hide-class {
   opacity: 0;
 }
+
 .slideshow {
   opacity: 0;
   position: fixed;
@@ -144,10 +134,12 @@ onBeforeUnmount(() => clearInterval(intervalId))
   justify-content: center;
   align-items: center;
 }
-.slideshow.active{
+
+.slideshow.active {
   opacity: 1;
   transition: opacity 1s ease-in;
 }
+
 .background-image {
   transition: 0.3s;
   position: absolute;
@@ -158,16 +150,19 @@ onBeforeUnmount(() => clearInterval(intervalId))
   object-fit: cover;
   transform: translate(-50%, -50%);
 }
+
 .dots {
   z-index: 1001;
   position: absolute;
   bottom: 20px;
   display: flex;
   gap: 90px;
+
   @include mobile {
     gap: 15px;
   }
 }
+
 .dot {
   width: 15px;
   height: 15px;
@@ -177,6 +172,7 @@ onBeforeUnmount(() => clearInterval(intervalId))
   cursor: pointer;
   transition: background 0.3s;
 }
+
 .dot.active {
   background: white;
   opacity: 1;
